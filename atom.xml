@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-07-31T12:49:03.000Z</updated>
+  <updated>2016-08-01T17:19:26.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>测试2</title>
-    <link href="http://yoursite.com/2016/07/30/%E6%B5%8B%E8%AF%952/"/>
-    <id>http://yoursite.com/2016/07/30/测试2/</id>
+    <title>写在三周年</title>
+    <link href="http://yoursite.com/2016/07/30/2016%E5%86%99%E5%9C%A8%E4%B8%89%E5%91%A8%E5%B9%B4/"/>
+    <id>http://yoursite.com/2016/07/30/2016写在三周年/</id>
     <published>2016-07-30T10:00:09.000Z</published>
-    <updated>2016-07-31T12:49:03.000Z</updated>
+    <updated>2016-08-01T17:19:26.000Z</updated>
     
     <summary type="html">
     
@@ -32,11 +32,11 @@
   </entry>
   
   <entry>
-    <title>Hello World</title>
-    <link href="http://yoursite.com/2016/07/28/hello-world/"/>
-    <id>http://yoursite.com/2016/07/28/hello-world/</id>
+    <title>I&#39;m a test page</title>
+    <link href="http://yoursite.com/2016/07/28/Test-page/"/>
+    <id>http://yoursite.com/2016/07/28/Test-page/</id>
     <published>2016-07-28T09:39:13.000Z</published>
-    <updated>2016-07-31T12:48:15.000Z</updated>
+    <updated>2016-08-01T14:53:10.000Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
@@ -59,29 +59,71 @@
   </entry>
   
   <entry>
-    <title>新博客，新气象</title>
+    <title>博客搬家了！</title>
     <link href="http://yoursite.com/2016/07/28/%E6%96%B0%E5%8D%9A%E5%AE%A2%EF%BC%8C%E6%96%B0%E6%B0%94%E8%B1%A1/"/>
     <id>http://yoursite.com/2016/07/28/新博客，新气象/</id>
     <published>2016-07-28T09:39:13.000Z</published>
-    <updated>2016-07-30T09:54:44.000Z</updated>
+    <updated>2016-08-01T17:17:05.000Z</updated>
     
-    <content type="html"><![CDATA[<p><img align="center" src="https://dn-thornstep.qbox.me/2016-07-30_blog_image.png"></p>
-<p>##写在开头</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+    <content type="html"><![CDATA[<h2 id="我的博客之路"><a href="#我的博客之路" class="headerlink" title="我的博客之路"></a>我的博客之路</h2><p><img align="center" src="https://dn-thornstep.qbox.me/2016-07-30_blog_image.png"></p>
+<h3 id="CSDN"><a href="#CSDN" class="headerlink" title="CSDN"></a>CSDN</h3><p>如今进入互联网这一行，如果没有自己的博客你都不好意思跟人家聊技术，我在3、4年就开始在CSDN上记录自己的学习过程，那时候之所以在CSDN上建博客，一来是因为方便，再者是没有技术要求。然而久而久之你会发现，这东西已经无法满足我们的要求，丫每次打开博客的时候都下决心要自定义自己的博客，于是乎就有了基于Octopress的博客。<br><a href="http://blog.csdn.net/u014783027" target="_blank" rel="external">CSDN博客</a></p>
+<h3 id="Octopress"><a href="#Octopress" class="headerlink" title="Octopress"></a>Octopress</h3><p>那是去年的第一场雪，比前年来的稍晚一些；我在自己的mac上键入疾飞，在克服重重困难之后终于在<a href="https://github.com/" target="_blank" rel="external">github</a>上搭建了属于自己的博客。此博客用了一年之久，然而又久而久之，丫又满足不了我们的要求了。一是因为人懒了，好久没更新了，更重要是提交更新巨慢啊，<code>rake preview</code>之后，喝了一杯咖啡你会发现还有百分之十未完成。这是由于Octopress是基于Ruby的，生成博客文章的速度非常慢，于是我就查找到了代替它的东西<a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>。</p>
+<h3 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h3><p>使用Hexo的原因：</p>
+<ul>
+<li>Hexo和Octopress都是生成静态文件，可以很方便的托管到github和coding上</li>
+<li>Hexo是基于Node的，而Node的速度是非常快的</li>
+<li>Hexo目前在github上的stars已经超过Octopress，更多的人在维护Hexo</li>
+</ul>
+<p>配置Hexo的大致过程以及自己踩过的坑：</p>
+<h4 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h4><p>要安装Hexo首先要安装<a href="https://www.npmjs.com/" target="_blank" rel="external">npm</a>:</p>
+<p><strong>入坑1：</strong></p>
+<p>当你安装npm的时候会提示你本地没有安装node,然后你去费劲周折安装node，回来再安装npm，觉得这次可以了吧。然后你会发现装不动啊，丫去查资料发现镜像是国外的，又是背墙的悲剧。换<a href="http://npm.taobao.org/" target="_blank" rel="external">淘宝镜像</a>,然后你终于发现在中国还是国产的好（当然核心还是国外的啊）！不过，最近发现NodeJs的安装包默认安装npm，这可方便了很多。</p>
+<p>现在如下命令安装 Hexo：</p>
+<pre><code>npm install -g hexo-cli
+</code></pre><p>如果报用户权限不够就试试sudo，如果提示各种ERR的话就试试：</p>
+<pre><code>npm install hexo --no-optional
+</code></pre><p>实在不行，重新安装npm。</p>
+<h4 id="创建一个新的博客"><a href="#创建一个新的博客" class="headerlink" title="创建一个新的博客"></a>创建一个新的博客</h4><p>接着我们创建一个新的博客目录：</p>
+<pre><code>$ hexo init myBlogFolder #本地建文件夹
+$ cd myBlogFolder
+$ npm install
+</code></pre><p>以上命令完成后，会在目标目录生成以下的目录结构：</p>
+<pre><code>.
+├── _config.yml
+├── package.json
+├── scaffolds
+├── source
+|   └── _posts
+└── themes
+</code></pre><p>之前的hexo会默认在source建很多文件夹，不过最近版的hexo只有一个_posts文件夹，其他需要自己创建。<br>可以看到，hexo的目录非常简单：</p>
+<ul>
+<li>_config.yml 是博客的配置文件，里面可以配置你的Title，签名，头像等等（ps:配置文件有Key: value的格式，并且冒号后必须有空格）</li>
+<li>scaffolds 是博客文章模板。</li>
+<li>source 是博客文章目录，你可以在这里添加标签、关于等文件夹便于管理。</li>
+<li>themes 存放主题风格文件，默认是landscape，我个人使用的是<a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="external">Next</a>。</li>
+</ul>
+<h4 id="OK！测试一下："><a href="#OK！测试一下：" class="headerlink" title="OK！测试一下："></a>OK！测试一下：</h4><p>生成博客配置文件</p>
+<pre><code>hexo g
+</code></pre><p>发布到本地服务器</p>
+<pre><code>hexo s
+</code></pre><p>访问：<code>localhost:4000</code><br>然后你会看到很朴素的博客就诞生了。</p>
+<h4 id="发布到github和coding"><a href="#发布到github和coding" class="headerlink" title="发布到github和coding"></a>发布到github和coding</h4><p>在根目录的_config.yml中找到：</p>
+<pre><code>deploy:
+    type: git
+    repo:
+    coding: https://git.coding.net/yourcoding/yourcoding.git,coding-pages
+    github: https://github.com/yourgithub/yourgithub.github.io.git,master
+</code></pre><p><strong>入坑2:</strong></p>
+<p>在配置coding的时候，一定要放在coding-pages的分支，不要放在master，因为coding的pages功能默认在coding-pages分支上，当时我就是错设置为master，导致一直404；</p>
+<p><strong>入坑3:</strong></p>
+<p>在github建repository的时候，github默认每个用户只能建一个pages静态链接库，并且在创建repository时候加上<code>.github.io</code></p>
+<h4 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h4><p>如果有需要可以购买属于自己的域名，设置解析域名，海外绑定github的地址，默认绑定coding的地址，这样就可以国内访问coding，国外访问github了。这里如何把github和coding绑定到自己的域名就不说了，网上有很多这方面的资料。</p>
+<h2 id="Future"><a href="#Future" class="headerlink" title="Future"></a>Future</h2><p>记录学习与生活，希望自己在这一块净土，耕耘并记录自己的未来。</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;&lt;img align=&quot;center&quot; src=&quot;https://dn-thornstep.qbox.me/2016-07-30_blog_image.png&quot;&gt;&lt;/p&gt;
-&lt;p&gt;##写在开头&lt;/p&gt;
-&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-
+      &lt;h2 id=&quot;我的博客之路&quot;&gt;&lt;a href=&quot;#我的博客之路&quot; class=&quot;headerlink&quot; title=&quot;我的博客之路&quot;&gt;&lt;/a&gt;我的博客之路&lt;/h2&gt;&lt;p&gt;&lt;img align=&quot;center&quot; src=&quot;https://dn-thornstep.qbox.me/
     
     </summary>
     
