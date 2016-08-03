@@ -63,7 +63,7 @@
     <link href="http://yoursite.com/2016/07/28/%E6%96%B0%E5%8D%9A%E5%AE%A2%EF%BC%8C%E6%96%B0%E6%B0%94%E8%B1%A1/"/>
     <id>http://yoursite.com/2016/07/28/新博客，新气象/</id>
     <published>2016-07-28T09:39:13.000Z</published>
-    <updated>2016-08-01T17:17:05.000Z</updated>
+    <updated>2016-08-03T14:36:09.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="我的博客之路"><a href="#我的博客之路" class="headerlink" title="我的博客之路"></a>我的博客之路</h2><p><img align="center" src="https://dn-thornstep.qbox.me/2016-07-30_blog_image.png"></p>
 <h3 id="CSDN"><a href="#CSDN" class="headerlink" title="CSDN"></a>CSDN</h3><p>如今进入互联网这一行，如果没有自己的博客你都不好意思跟人家聊技术，我在3、4年就开始在CSDN上记录自己的学习过程，那时候之所以在CSDN上建博客，一来是因为方便，再者是没有技术要求。然而久而久之你会发现，这东西已经无法满足我们的要求，丫每次打开博客的时候都下决心要自定义自己的博客，于是乎就有了基于Octopress的博客。<br><a href="http://blog.csdn.net/u014783027" target="_blank" rel="external">CSDN博客</a></p>
@@ -107,7 +107,7 @@ $ npm install
 </code></pre><p>发布到本地服务器</p>
 <pre><code>hexo s
 </code></pre><p>访问：<code>localhost:4000</code><br>然后你会看到很朴素的博客就诞生了。</p>
-<h4 id="发布到github和coding"><a href="#发布到github和coding" class="headerlink" title="发布到github和coding"></a>发布到github和coding</h4><p>在根目录的_config.yml中找到：</p>
+<h4 id="发布到github和coding"><a href="#发布到github和coding" class="headerlink" title="发布到github和coding"></a>发布到github和coding</h4><p>根目录的_config.yml中找到：</p>
 <pre><code>deploy:
     type: git
     repo:
@@ -127,6 +127,14 @@ $ npm install
     
     </summary>
     
+    
+      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+    
+      <category term="博客" scheme="http://yoursite.com/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+      <category term="github" scheme="http://yoursite.com/tags/github/"/>
+    
+      <category term="coding" scheme="http://yoursite.com/tags/coding/"/>
     
   </entry>
   
