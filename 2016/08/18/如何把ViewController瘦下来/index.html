@@ -1,28 +1,327 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-  <title>王绵杰的个人博客</title>
-  <subtitle>STAY HUNGRY ！ STAY FOOLISH ！</subtitle>
-  <link href="/atom.xml" rel="self"/>
+<!doctype html>
+
+
+
   
-  <link href="http://yoursite.com/"/>
-  <updated>2016-08-25T15:58:48.000Z</updated>
-  <id>http://yoursite.com/</id>
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
   
-  <author>
-    <name>Thon Wang</name>
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
     
-  </author>
-  
-  <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>如何把View Controller瘦下来！</title>
-    <link href="http://yoursite.com/2016/08/18/%E5%A6%82%E4%BD%95%E6%8A%8AViewController%E7%98%A6%E4%B8%8B%E6%9D%A5/"/>
-    <id>http://yoursite.com/2016/08/18/如何把ViewController瘦下来/</id>
-    <published>2016-08-18T14:49:38.000Z</published>
-    <updated>2016-08-25T15:58:48.000Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="如何把View-Controller瘦下来"><a href="#如何把View-Controller瘦下来" class="headerlink" title="如何把View Controller瘦下来"></a>如何把View Controller瘦下来</h1><ul>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="UIView Controller,拆分," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="王绵杰的个人博客" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="如何把View Controller瘦下来
+有时候View Controller由于做了太多的事情，而变得非常庞大。这里既有数据的收集，又有逻辑的处理，还有各种归属于该View Controller的控件内存分配。这里面哪些可以代理到其他模块呢？这篇博客就是探索项目的架构，目的是分离复杂的代码逻辑，让我们的代码可读性更强。
+在View Controller里，这些职责或许是被各种 #pragma">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何把View Controller瘦下来！">
+<meta property="og:url" content="http://yoursite.com/2016/08/18/如何把ViewController瘦下来/index.html">
+<meta property="og:site_name" content="王绵杰的个人博客">
+<meta property="og:description" content="如何把View Controller瘦下来
+有时候View Controller由于做了太多的事情，而变得非常庞大。这里既有数据的收集，又有逻辑的处理，还有各种归属于该View Controller的控件内存分配。这里面哪些可以代理到其他模块呢？这篇博客就是探索项目的架构，目的是分离复杂的代码逻辑，让我们的代码可读性更强。
+在View Controller里，这些职责或许是被各种 #pragma">
+<meta property="og:updated_time" content="2016-08-25T15:58:48.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如何把View Controller瘦下来！">
+<meta name="twitter:description" content="如何把View Controller瘦下来
+有时候View Controller由于做了太多的事情，而变得非常庞大。这里既有数据的收集，又有逻辑的处理，还有各种归属于该View Controller的控件内存分配。这里面哪些可以代理到其他模块呢？这篇博客就是探索项目的架构，目的是分离复杂的代码逻辑，让我们的代码可读性更强。
+在View Controller里，这些职责或许是被各种 #pragma">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/08/18/如何把ViewController瘦下来/"/>
+
+  <title> 如何把View Controller瘦下来！ | 王绵杰的个人博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">王绵杰的个人博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">STAY HUNGRY ！ STAY FOOLISH ！</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                如何把View Controller瘦下来！
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-18T22:49:38+08:00" content="2016-08-18">
+              2016-08-18
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/18/如何把ViewController瘦下来/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/18/如何把ViewController瘦下来/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+          
+             <span id="/2016/08/18/如何把ViewController瘦下来/" class="leancloud_visitors" data-flag-title="如何把View Controller瘦下来！">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="如何把View-Controller瘦下来"><a href="#如何把View-Controller瘦下来" class="headerlink" title="如何把View Controller瘦下来"></a>如何把View Controller瘦下来</h1><ul>
 <li>有时候View Controller由于做了太多的事情，而变得非常庞大。这里既有数据的收集，又有逻辑的处理，还有各种归属于该View Controller的控件内存分配。这里面哪些可以代理到其他模块呢？这篇博客就是探索项目的架构，目的是分离复杂的代码逻辑，让我们的代码可读性更强。</li>
 <li>在View Controller里，这些职责或许是被各种 <code>#pragma mark</code> 分组实现，如果你是这样的话，那么就可以考虑把这些部分拆分到不同的文件里。</li>
 </ul>
@@ -177,142 +476,470 @@
 <ul>
 <li>这种方式凸显出了一大好处是，把大的对象拆成了很多小的模块。他们可能会被修改，重写或者是替换。相比那些复杂臃肿的view controller，你可以把导航栏设置为自定义的<code>Navigator</code>。</li>
 </ul>
-]]></content>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/UIView-Controller/" rel="tag">#UIView Controller</a>
+          
+            <a href="/tags/拆分/" rel="tag">#拆分</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/30/2016写在三周年/" rel="next" title="写在三周年">
+                <i class="fa fa-chevron-left"></i> 写在三周年
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
     
-    <summary type="html">
+      <div class="ds-thread" data-thread-key="2016/08/18/如何把ViewController瘦下来/"
+           data-title="如何把View Controller瘦下来！" data-url="http://yoursite.com/2016/08/18/如何把ViewController瘦下来/">
+      </div>
     
-      &lt;h1 id=&quot;如何把View-Controller瘦下来&quot;&gt;&lt;a href=&quot;#如何把View-Controller瘦下来&quot; class=&quot;headerlink&quot; title=&quot;如何把View Controller瘦下来&quot;&gt;&lt;/a&gt;如何把View Controller瘦下来&lt;/
-    
-    </summary>
-    
-    
-      <category term="UIView Controller" scheme="http://yoursite.com/tags/UIView-Controller/"/>
-    
-      <category term="拆分" scheme="http://yoursite.com/tags/%E6%8B%86%E5%88%86/"/>
-    
-  </entry>
+  </div>
+
+
+        </div>
+        
+          
   
-  <entry>
-    <title>写在三周年</title>
-    <link href="http://yoursite.com/2016/07/30/2016%E5%86%99%E5%9C%A8%E4%B8%89%E5%91%A8%E5%B9%B4/"/>
-    <id>http://yoursite.com/2016/07/30/2016写在三周年/</id>
-    <published>2016-07-30T10:00:09.000Z</published>
-    <updated>2016-08-01T17:19:26.000Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-      <category term="test" scheme="http://yoursite.com/tags/test/"/>
-    
-  </entry>
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://dn-thornstep.qbox.me/thronvbear_blog_avatarImage.JPG"
+               alt="Thon Wang" />
+          <p class="site-author-name" itemprop="name">Thon Wang</p>
+          <p class="site-description motion-element" itemprop="description">本博客主要记录自己的学习和生活，有关技术方便若有浅尝辄止、分析不足的地方，还请指出！</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/ThornDev" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/u014783027" target="_blank" title="Pre Blog">
+                  
+                    <i class="fa fa-fw fa-inbox"></i>
+                  
+                  Pre Blog
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.bootcss.com/p/font-awesome/#" target="_blank" title="FontA">
+                  
+                    <i class="fa fa-fw fa-fire"></i>
+                  
+                  FontA
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.devtang.com" title="唐巧的技术博客" target="_blank">唐巧的技术博客</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#如何把View-Controller瘦下来"><span class="nav-number">1.</span> <span class="nav-text">如何把View Controller瘦下来</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Data-Source"><span class="nav-number">2.</span> <span class="nav-text">Data Source</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Standard-Composition"><span class="nav-number">3.</span> <span class="nav-text">Standard Composition</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Smarter-Views"><span class="nav-number">4.</span> <span class="nav-text">Smarter Views</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Presenter"><span class="nav-number">5.</span> <span class="nav-text">Presenter</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Binding-pattern"><span class="nav-number">6.</span> <span class="nav-text">Binding pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#interaction-pattern"><span class="nav-number">7.</span> <span class="nav-text">interaction pattern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#键盘管理"><span class="nav-number">8.</span> <span class="nav-text">键盘管理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#导航栏"><span class="nav-number">9.</span> <span class="nav-text">导航栏</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
   
-  <entry>
-    <title>I&#39;m a test page</title>
-    <link href="http://yoursite.com/2016/07/28/Test-page/"/>
-    <id>http://yoursite.com/2016/07/28/Test-page/</id>
-    <published>2016-07-28T09:39:13.000Z</published>
-    <updated>2016-08-01T14:53:10.000Z</updated>
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Thon Wang</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
-    
-    </summary>
-    
-    
-  </entry>
   
-  <entry>
-    <title>博客搬家了！</title>
-    <link href="http://yoursite.com/2016/07/28/%E6%96%B0%E5%8D%9A%E5%AE%A2%EF%BC%8C%E6%96%B0%E6%B0%94%E8%B1%A1/"/>
-    <id>http://yoursite.com/2016/07/28/新博客，新气象/</id>
-    <published>2016-07-28T09:39:13.000Z</published>
-    <updated>2016-08-03T14:36:09.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="我的博客之路"><a href="#我的博客之路" class="headerlink" title="我的博客之路"></a>我的博客之路</h2><p><img align="center" src="https://dn-thornstep.qbox.me/2016-07-30_blog_image.png"></p>
-<h3 id="CSDN"><a href="#CSDN" class="headerlink" title="CSDN"></a>CSDN</h3><p>如今进入互联网这一行，如果没有自己的博客你都不好意思跟人家聊技术，我在3、4年就开始在CSDN上记录自己的学习过程，那时候之所以在CSDN上建博客，一来是因为方便，再者是没有技术要求。然而久而久之你会发现，这东西已经无法满足我们的要求，丫每次打开博客的时候都下决心要自定义自己的博客，于是乎就有了基于Octopress的博客。<br><a href="http://blog.csdn.net/u014783027" target="_blank" rel="external">CSDN博客</a></p>
-<h3 id="Octopress"><a href="#Octopress" class="headerlink" title="Octopress"></a>Octopress</h3><p>那是去年的第一场雪，比前年来的稍晚一些；我在自己的mac上键入疾飞，在克服重重困难之后终于在<a href="https://github.com/" target="_blank" rel="external">github</a>上搭建了属于自己的博客。此博客用了一年之久，然而又久而久之，丫又满足不了我们的要求了。一是因为人懒了，好久没更新了，更重要是提交更新巨慢啊，<code>rake preview</code>之后，喝了一杯咖啡你会发现还有百分之十未完成。这是由于Octopress是基于Ruby的，生成博客文章的速度非常慢，于是我就查找到了代替它的东西<a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>。</p>
-<h3 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h3><p>使用Hexo的原因：</p>
-<ul>
-<li>Hexo和Octopress都是生成静态文件，可以很方便的托管到github和coding上</li>
-<li>Hexo是基于Node的，而Node的速度是非常快的</li>
-<li>Hexo目前在github上的stars已经超过Octopress，更多的人在维护Hexo</li>
-</ul>
-<p>配置Hexo的大致过程以及自己踩过的坑：</p>
-<h4 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h4><p>要安装Hexo首先要安装<a href="https://www.npmjs.com/" target="_blank" rel="external">npm</a>:</p>
-<p><strong>入坑1：</strong></p>
-<p>当你安装npm的时候会提示你本地没有安装node,然后你去费劲周折安装node，回来再安装npm，觉得这次可以了吧。然后你会发现装不动啊，丫去查资料发现镜像是国外的，又是背墙的悲剧。换<a href="http://npm.taobao.org/" target="_blank" rel="external">淘宝镜像</a>,然后你终于发现在中国还是国产的好（当然核心还是国外的啊）！不过，最近发现NodeJs的安装包默认安装npm，这可方便了很多。</p>
-<p>现在如下命令安装 Hexo：</p>
-<pre><code>npm install -g hexo-cli
-</code></pre><p>如果报用户权限不够就试试sudo，如果提示各种ERR的话就试试：</p>
-<pre><code>npm install hexo --no-optional
-</code></pre><p>实在不行，重新安装npm。</p>
-<h4 id="创建一个新的博客"><a href="#创建一个新的博客" class="headerlink" title="创建一个新的博客"></a>创建一个新的博客</h4><p>接着我们创建一个新的博客目录：</p>
-<pre><code>$ hexo init myBlogFolder #本地建文件夹
-$ cd myBlogFolder
-$ npm install
-</code></pre><p>以上命令完成后，会在目标目录生成以下的目录结构：</p>
-<pre><code>.
-├── _config.yml
-├── package.json
-├── scaffolds
-├── source
-|   └── _posts
-└── themes
-</code></pre><p>之前的hexo会默认在source建很多文件夹，不过最近版的hexo只有一个_posts文件夹，其他需要自己创建。<br>可以看到，hexo的目录非常简单：</p>
-<ul>
-<li>_config.yml 是博客的配置文件，里面可以配置你的Title，签名，头像等等（ps:配置文件有Key: value的格式，并且冒号后必须有空格）</li>
-<li>scaffolds 是博客文章模板。</li>
-<li>source 是博客文章目录，你可以在这里添加标签、关于等文件夹便于管理。</li>
-<li>themes 存放主题风格文件，默认是landscape，我个人使用的是<a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="external">Next</a>。</li>
-</ul>
-<h4 id="OK！测试一下："><a href="#OK！测试一下：" class="headerlink" title="OK！测试一下："></a>OK！测试一下：</h4><p>生成博客配置文件</p>
-<pre><code>hexo g
-</code></pre><p>发布到本地服务器</p>
-<pre><code>hexo s
-</code></pre><p>访问：<code>localhost:4000</code><br>然后你会看到很朴素的博客就诞生了。</p>
-<h4 id="发布到github和coding"><a href="#发布到github和coding" class="headerlink" title="发布到github和coding"></a>发布到github和coding</h4><p>根目录的_config.yml中找到：</p>
-<pre><code>deploy:
-    type: git
-    repo:
-    coding: https://git.coding.net/yourcoding/yourcoding.git,coding-pages
-    github: https://github.com/yourgithub/yourgithub.github.io.git,master
-</code></pre><p><strong>入坑2:</strong></p>
-<p>在配置coding的时候，一定要放在coding-pages的分支，不要放在master，因为coding的pages功能默认在coding-pages分支上，当时我就是错设置为master，导致一直404；</p>
-<p><strong>入坑3:</strong></p>
-<p>在github建repository的时候，github默认每个用户只能建一个pages静态链接库，并且在创建repository时候加上<code>.github.io</code></p>
-<h4 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h4><p>如果有需要可以购买属于自己的域名，设置解析域名，海外绑定github的地址，默认绑定coding的地址，这样就可以国内访问coding，国外访问github了。这里如何把github和coding绑定到自己的域名就不说了，网上有很多这方面的资料。</p>
-<h2 id="Future"><a href="#Future" class="headerlink" title="Future"></a>Future</h2><p>记录学习与生活，希望自己在这一块净土，耕耘并记录自己的未来。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;我的博客之路&quot;&gt;&lt;a href=&quot;#我的博客之路&quot; class=&quot;headerlink&quot; title=&quot;我的博客之路&quot;&gt;&lt;/a&gt;我的博客之路&lt;/h2&gt;&lt;p&gt;&lt;img align=&quot;center&quot; src=&quot;https://dn-thornstep.qbox.me/
-    
-    </summary>
-    
-    
-      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
-    
-      <category term="博客" scheme="http://yoursite.com/tags/%E5%8D%9A%E5%AE%A2/"/>
-    
-      <category term="github" scheme="http://yoursite.com/tags/github/"/>
-    
-      <category term="coding" scheme="http://yoursite.com/tags/coding/"/>
-    
-  </entry>
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
   
-</feed>
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"thornvbear"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("3HWxI4CHdU8auWVasBDvYYHf-gzGzoHsz", "xNzv7WKP3ignuxpzn11LEBpT");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>
