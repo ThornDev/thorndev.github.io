@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-08-25T15:58:48.000Z</updated>
+  <updated>2016-09-17T14:34:49.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,60 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Xcode 8.0姗姗来迟</title>
+    <link href="http://yoursite.com/2016/09/14/xcode8%E5%A7%97%E5%A7%97%E6%9D%A5%E8%BF%9F/"/>
+    <id>http://yoursite.com/2016/09/14/xcode8姗姗来迟/</id>
+    <published>2016-09-14T09:46:36.000Z</published>
+    <updated>2016-09-17T14:34:49.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Xcode-8-0姗姗来迟"><a href="#Xcode-8-0姗姗来迟" class="headerlink" title="Xcode 8.0姗姗来迟"></a>Xcode 8.0姗姗来迟</h2><h3 id="Xcode-8-0-版本"><a href="#Xcode-8-0-版本" class="headerlink" title="Xcode 8.0 版本"></a>Xcode 8.0 版本</h3><ul>
+<li>Xcode 8.0GM版本已发布了一段时间，用于新一代的Xcode升级版本，这里普及一个知识：什么是GM版本，GM版是软件开发版本中的最终正式版的母版，不意外发现重大bug的话，GM版＝正式x.0版。Xcode 8.0正式版也于前两天正式发布，显然它是为iOS 10而生的。</li>
+<li>Xcode 8.0更新提示：</li>
+</ul>
+<p><img src="https://dn-thornstep.qbox.me/2016-09-17xcode8.0_update_note.png" alt="Smaller image"></p>
+<ul>
+<li>首先，Xcode 8引入了Swift3.0，加入了更多新的特性，加入了支持iOS 10、watchOS 3、tvOS 10、macOS Sierra的SDK。<br>至于详细的Release Note可以查看<a href="https://developer.apple.com/library/content/releasenotes/DeveloperTools/RN-Xcode/Introduction.html" target="_blank" rel="external">https://developer.apple.com/library/content/releasenotes/DeveloperTools/RN-Xcode/Introduction.html</a><br>Editor generates docs,highlights current line,supports color and image literals in .swift file, and completes image names</li>
+<li><p>这里也没什么有用的信息，Xcode性能提升，能更好的支持XIB，增加了一些性能提示，更便于开发者进行工作开发，新加入了San Francisco Mono 编辑字体和新的主题，值得一说的是：</p>
+<h3 id="1、证书管理"><a href="#1、证书管理" class="headerlink" title="1、证书管理"></a>1、证书管理</h3><p>  Xcode支持自动管理证书的功能，当然也可以自己设置。<br>  <img src="https://dn-thornstep.qbox.me/2016-09-17_sign_manage_intro.png" alt="Mou image"><br>  不过建议大家勾选这个Automatically manage signing.可以很方便的为我们管理自己的证书。</p>
+<h3 id="2、xib或者storyboard的管理"><a href="#2、xib或者storyboard的管理" class="headerlink" title="2、xib或者storyboard的管理"></a>2、xib或者storyboard的管理</h3></li>
+<li><p>1.xib可以更方便的查看你的布局在不同尺寸设备上的显示情况了。</p>
+<p>  <img src="https://dn-thornstep.qbox.me/2016-09-17_xib_diff_device.png" alt="image"><br>  可以看到Xcode8.0把设备尺寸设置放在了布局的最下方，而右边里的Attributes Inspector里的尺寸选择取消了，并且我们可以按条件选择要查看的设备，点击<figure class="highlight plain"><figcaption><span>for traits```可以选择width或者height查看。这次可以说苹果很有良心，为这个设计点赞。</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">	</div><div class="line">* 2.使用Xcode8打开xib文件后，会出现下图的提示。</div><div class="line">	![image](https://dn-thornstep.qbox.me/2016-09-17_xib_change_for_device.jpg)</div><div class="line">	大家选择Choose Device即可。之后大家会发现布局啊，frame乱了，只需要更新一下frame即可。</div><div class="line">	* 注意：如果按上面的步骤操作后，在用Xcode7打开Xib会报一下错误</div><div class="line">	* 解决方法：需要删除xib里的</div></pre></td></tr></table></figure></p>
+<p>  <capability name="documents saved in the Xcode 8 format" mintoolsversion="8.0"><br>  ```<br>  以及把&lt; document &gt;中的toolsVersion和&lt; plugIn &gt;中的version改成你正常的xib文件中的值。</capability></p>
+</li>
+</ul>
+<h3 id="3、代码注释不能用的解决办法"><a href="#3、代码注释不能用的解决办法" class="headerlink" title="3、代码注释不能用的解决办法"></a>3、代码注释不能用的解决办法</h3><ul>
+<li><p>这个是因为苹果解决xcode ghost，把插件屏蔽了。</p>
+<p>  解决方法</p>
+<p>  打开终端，命令运行： sudo /usr/libexec/xpccachectl</p>
+<p>  然后必须重启电脑后生效</p>
+<p>  Xcode 8.0貌似取消了对插件的支持，因为苹果认为这会带来安全上的问题，并且提交审核会被拒绝，如果大家有什么新的解决办法请回复里告知，如果你对插件依赖性非常严重那么，可以参照<a href="http://vongloo.me/2016/09/10/Make-Your-Xcode8-Great-Again/?utm_source=tuicool&amp;utm_medium=referral&amp;sukey=3997c0719f15    15204f9d2fb0e66acbbbaaa5fd0d4849a108d51f0c9a0cdca5c0a61b68edc24f2f9423a81b60ce6e728c" target="_blank" rel="external">让你的 Xcode8 继续使用插件</a>。</p>
+</li>
+</ul>
+<h3 id="4、iOS-10隐私权限设置"><a href="#4、iOS-10隐私权限设置" class="headerlink" title="4、iOS 10隐私权限设置"></a>4、iOS 10隐私权限设置</h3><ul>
+<li>iOS 10 开始对隐私权限更加严格，如果你不设置就会直接崩溃，现在很多遇到崩溃问题了，一般解决办法都是在info.plist文件添加对应的Key-Value就可以了。</li>
+</ul>
+<p><img src="https://dn-thornstep.qbox.me/2016-09-17_ios10_private_setting.png" alt="image"><br>如上图显示的是部分权限设置：蓝牙使用权限，日历，相机，通讯录，健康分享，健康更新，后台一直定位，定位许可，使用时定位等权限设置。</p>
+<h3 id="5、Xcode-8-运行一堆没用的logs解决办法"><a href="#5、Xcode-8-运行一堆没用的logs解决办法" class="headerlink" title="5、Xcode 8 运行一堆没用的logs解决办法"></a>5、Xcode 8 运行一堆没用的logs解决办法</h3><p><img src="https://dn-thornstep.qbox.me/2016-09-17_xcode8_print_logs.png" alt="image"><br>上图我们看到，自己新建的一个工程什么也没做直接运行打印了一堆烂七八糟的东西，我觉得这个应该是Xcode 8的问题，打印的东西也没仔细研究，看着是一些项目的状态值，如果不想每次运行都有这些东西可以在Edite Scheme——&gt;Run——&gt;Arguments里设置OS_ACTIVITY_MODE : disable如下图</p>
+<p><img src="https://dn-thornstep.qbox.me/2016-09-17_lock_extra_logs.png" alt="image"></p>
+<h4 id="6、iOS-10新特性"><a href="#6、iOS-10新特性" class="headerlink" title="6、iOS 10新特性"></a>6、iOS 10新特性</h4><ul>
+<li>Xcode 8 是为iOS 10服务的，所以要了解iOS 10参看：<a href="https://developer.apple.com/library/content/releasenotes/General/WhatsNewIniOS/Articles/iOS10.html#//apple_ref/doc/uid/TP40017084-SW1" target="_blank" rel="external">iOS 10 苹果官方文档</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Xcode-8-0姗姗来迟&quot;&gt;&lt;a href=&quot;#Xcode-8-0姗姗来迟&quot; class=&quot;headerlink&quot; title=&quot;Xcode 8.0姗姗来迟&quot;&gt;&lt;/a&gt;Xcode 8.0姗姗来迟&lt;/h2&gt;&lt;h3 id=&quot;Xcode-8-0-版本&quot;&gt;&lt;a href
+    
+    </summary>
+    
+    
+      <category term="Xcode 8.0" scheme="http://yoursite.com/tags/Xcode-8-0/"/>
+    
+      <category term="新特性" scheme="http://yoursite.com/tags/%E6%96%B0%E7%89%B9%E6%80%A7/"/>
+    
+  </entry>
   
   <entry>
     <title>如何把View Controller瘦下来！</title>
