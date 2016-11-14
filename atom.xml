@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://thornvbear.com/"/>
-  <updated>2016-09-17T14:50:49.000Z</updated>
+  <updated>2016-11-14T11:29:30.000Z</updated>
   <id>http://thornvbear.com/</id>
   
   <author>
@@ -14,6 +14,403 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PHP 笔记整理（一）</title>
+    <link href="http://thornvbear.com/2016/10/22/PHP%20%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>http://thornvbear.com/2016/10/22/PHP 笔记整理（一）/</id>
+    <published>2016-10-22T05:42:13.000Z</published>
+    <updated>2016-11-14T11:29:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="PHP-变量规则："><a href="#PHP-变量规则：" class="headerlink" title="PHP 变量规则："></a>PHP 变量规则：</h3><ul>
+<li>变量以 $ 符号开头，其后是变量的名称</li>
+<li>变量名称必须以字母或下划线开头</li>
+<li>变量名称不能以数字开头</li>
+<li>变量名称只能包含字母数字字符和下划线（A-z、0-9 以及 _）</li>
+<li>变量名称对大小写敏感（$y 与 $Y 是两个不同的变量）</li>
+</ul>
+<p>注释：PHP 变量名称对大小写敏感！</p>
+<p>###PHP 是一门类型松散的语言</p>
+<ul>
+<li>我们不必告知 PHP 变量的数据类型</li>
+</ul>
+<h3 id="PHP变量作用域"><a href="#PHP变量作用域" class="headerlink" title="PHP变量作用域"></a>PHP变量作用域</h3><h4 id="Local-和-Global-作用域"><a href="#Local-和-Global-作用域" class="headerlink" title="Local 和 Global 作用域"></a>Local 和 Global 作用域</h4><ul>
+<li><p>函数之外声明的变量拥有 Global 作用域，只能在函数以外进行访问。</p>
+</li>
+<li><p>函数内部声明的变量拥有 LOCAL 作用域，只能在函数内部进行访问。</p>
+</li>
+</ul>
+<h4 id="PHP-global-关键词"><a href="#PHP-global-关键词" class="headerlink" title="PHP global 关键词"></a>PHP global 关键词</h4><p><code>global</code>关键词用于访问函数内的全局变量。</p>
+<p>要做到这一点，请在（函数内部）变量前面使用 global 关键词：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">实例</div><div class="line">&lt;?php</div><div class="line">$x=5;</div><div class="line">$y=10;</div><div class="line"></div><div class="line">function myTest() &#123;</div><div class="line">  global $x,$y;</div><div class="line">  $y=$x+$y;</div><div class="line">&#125;</div><div class="line"></div><div class="line">myTest();</div><div class="line">echo $y; // 输出 15</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
+<p>####var_dump() 会返回变量的数据类型和值</p>
+<h3 id="设置-PHP-常量"><a href="#设置-PHP-常量" class="headerlink" title="设置 PHP 常量"></a>设置 PHP 常量</h3><p>如需设置常量，请使用<code>define()</code>函数 - 它使用三个参数：</p>
+<ul>
+<li>首个参数定义常量的名称</li>
+<li>第二个参数定义常量的值</li>
+<li>可选的第三个参数规定常量名是否对大小写敏感。默认是 false。</li>
+</ul>
+<p>下例创建了一个对大小写敏感的常量，值为 “Welcome to W3School.com.cn!”：<br>实例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">define(&quot;GREETING&quot;, &quot;Welcome to thornvbear.tech!&quot;);</div><div class="line">echo GREETING;</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
+<p><strong>字符串里单引号和双引号的区别</strong></p>
+<ul>
+<li>双引号解析变量，单引号不解析变量</li>
+<li>单引号执行速率更快</li>
+<li>双引号解析所有的转义符，单引号只解析`和\这两种转义符</li>
+</ul>
+<p><strong>数据类型转换</strong></p>
+<ul>
+<li>$str = 1 + ‘999abc’; 结果为10000；</li>
+</ul>
+<p><strong>字符串运算符</strong></p>
+<ul>
+<li>.     串接     $txt1 = “Hello”;  $txt2 = $txt1 . “ world!”     现在 $txt2 包含 “Hello world!”</li>
+<li>.=     串接赋值     $txt1 = “Hello”; $txt1 .= “ world!”     现在 $txt1 包含 “Hello world!”</li>
+</ul>
+<p><strong>foreach 循环</strong></p>
+<p>foreach 循环只适用于数组，并用于遍历数组中的每个键/值对。<br>语法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">foreach ($array as $value) &#123;</div><div class="line">  code to be executed;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>每进行一次循环迭代，当前数组元素的值就会被赋值给 $value 变量，并且数组指针会逐一地移动，直到到达最后一个数组元素。</p>
+<p>###PHP 关联数组(即字典 map)</p>
+<p>关联数组是使用您分配给数组的指定键的数组。</p>
+<p>有两种创建关联数组的方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$age=array(&quot;Peter&quot;=&gt;&quot;35&quot;,&quot;Ben&quot;=&gt;&quot;37&quot;,&quot;Joe&quot;=&gt;&quot;43&quot;);</div></pre></td></tr></table></figure>
+<p>或者：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$age[&apos;Peter&apos;]=&quot;35&quot;;</div><div class="line">$age[&apos;Ben&apos;]=&quot;37&quot;;</div><div class="line">$age[&apos;Joe&apos;]=&quot;43&quot;;</div></pre></td></tr></table></figure>
+<p>随后可以在脚本中使用指定键：<br>实例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">$age=array(&quot;Bill&quot;=&gt;&quot;35&quot;,&quot;Steve&quot;=&gt;&quot;37&quot;,&quot;Peter&quot;=&gt;&quot;43&quot;);</div><div class="line">echo &quot;Peter is &quot; . $age[&apos;Peter&apos;] . &quot; years old.&quot;;</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
+<p>####表单元素</p>
+<p>什么是 <code>$_SERVER[&quot;PHP_SELF&quot;]</code>变量？</p>
+<p><code>$_SERVER[&quot;PHP_SELF&quot;]</code> 是一种超全局变量，它返回当前执行脚本的文件名。</p>
+<p>因此，<code>$_SERVER[&quot;PHP_SELF&quot;]</code>将表单数据发送到页面本身，而不是跳转到另一张页面。这样，用户就能够在表单页面获得错误提示信息。<br>什么是 <code>htmlspecialchars()</code> 函数？</p>
+<p><code>htmlspecialchars()</code>函数把特殊字符转换为 HTML 实体。这意味着 &lt; 和 &gt; 之类的 HTML 字符会被替换为 &lt; 和 &gt; 。这样可防止攻击者通过在表单中注入 HTML 或 JavaScript 代码（跨站点脚本攻击）对代码进行利用。</p>
+<p>###PHP中不同的PHP片段是可以互相使用的  也就是没有片段一说  只是跟jsp很像  哪里使用写哪里</p>
+<hr>
+<h3 id="PHP-Date-函数"><a href="#PHP-Date-函数" class="headerlink" title="PHP Date() 函数"></a>PHP Date() 函数</h3><p><strong>获得简单的日期</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">语法</div><div class="line"></div><div class="line">date(format,timestamp)</div><div class="line"></div><div class="line">format 	必需。规定时间戳的格式。</div><div class="line">timestamp 	可选。规定时间戳。默认是当前时间和日期。</div></pre></td></tr></table></figure>
+<p>date() 函数的格式参数是必需的，它们规定如何格式化日期或时间。</p>
+<p>下面列出了一些常用于日期的字符：</p>
+<pre><code>d - 表示月里的某天（01-31）
+m - 表示月（01-12）
+M - 月的英文大写
+Y - 表示年（四位数）
+1 - 表示周里的某天
+</code></pre><p>其他字符，比如 “/“, “.” 或 “-“ 也可被插入字符中，以增加其他格式。</p>
+<p><strong>自动版权年份</strong></p>
+<pre><code>© 2010-&lt;?php echo date(&quot;Y&quot;)?&gt;
+</code></pre><p><strong>获得简单的时间</strong></p>
+<p>下面是常用于时间的字符：</p>
+<pre><code>h - 带有首位零的 12 小时小时格式
+i - 带有首位零的分钟
+s - 带有首位零的秒（00 -59）
+a - 小写的午前和午后（am 或 pm）
+</code></pre><p><strong>mktime() 创建日期</strong></p>
+<p>语法</p>
+<pre><code>mktime(hour,minute,second,month,day,year)
+</code></pre><p>strtotime() 用字符串来创建日期</p>
+<pre><code>strtotime(time,now)
+
+实例
+&lt;?php
+$d=strtotime(&quot;10:38pm April 15 2015&quot;);
+echo &quot;创建日期是 &quot; . date(&quot;Y-m-d h:i:sa&quot;, $d);
+?&gt;
+</code></pre><p>###PHP include 和 require 语句</p>
+<p>通过 include 或 require 语句，可以将 PHP 文件的内容插入另一个 PHP 文件（在服务器执行它之前）。</p>
+<p>include 和 require 语句是相同的，除了错误处理方面：</p>
+<pre><code>require 会生成致命错误（E_COMPILE_ERROR）并停止脚本
+include 只生成警告（E_WARNING），并且脚本会继续
+</code></pre><p>因此，如果您希望继续执行，并向用户输出结果，即使包含文件已丢失，那么请使用 include。否则，在框架、CMS 或者复杂的 PHP 应用程序编程中，请始终使用 require 向执行流引用关键文件。这有助于提高应用程序的安全性和完整性，在某个关键文件意外丢失的情况下。</p>
+<p>语法</p>
+<pre><code>include &apos;filename&apos;;
+</code></pre><p>或</p>
+<pre><code>require &apos;filename&apos;;    
+</code></pre><p>###PHP 操作文件</p>
+<p>注意：请谨慎操作文件！</p>
+<p>当您操作文件时必须非常小心。如果您操作失误，可能会造成非常严重的破坏。常见的错误是：</p>
+<ul>
+<li>编辑错误的文件</li>
+<li>被垃圾数据填满硬盘</li>
+<li>意外删除文件内容</li>
+</ul>
+<p><strong>readfile() 函数</strong></p>
+<p><code>readfile()</code>函数读取文件，并把它写入输出缓冲。</p>
+<p><strong>Open File - fopen()</strong></p>
+<p>打开文件的更好的方法是通过<code>fopen()</code>函数。此函数为您提供比<code>readfile()</code>函数更多的选项。</p>
+<p><code>fopen()</code>的第一个参数包含被打开的文件名，第二个参数规定打开文件的模式。如果<code>fopen()</code>函数未能打开指定的文件，下面的例子会生成一段消息：<br>实例</p>
+<pre><code>&lt;?php
+$myfile = fopen(&quot;webdictionary.txt&quot;, &quot;r&quot;) or die(&quot;Unable to open file!&quot;);
+echo fread($myfile,filesize(&quot;webdictionary.txt&quot;));
+fclose($myfile);
+?&gt;
+</code></pre><p><strong>读取文件 - fread()</strong></p>
+<p><code>fread()</code>函数读取打开的文件。</p>
+<p><code>fread()</code>的第一个参数包含待读取文件的文件名，第二个参数规定待读取的最大字节数。</p>
+<p><strong>关闭文件 - fclose()</strong></p>
+<p><code>fclose()</code>函数用于关闭打开的文件。</p>
+<p><strong>读取单行文件 - fgets()</strong></p>
+<p><code>fgets()</code>函数用于从文件读取单行。</p>
+<p><strong>检查 End-Of-File - feof()</strong></p>
+<p><code>feof()</code>函数检查是否已到达<code>&quot;end-of-file&quot; (EOF)</code>。</p>
+<p><code>feof()</code>对于遍历未知长度的数据很有用。</p>
+<p>下例逐行读取 “webdictionary.txt” 文件，直到<code>end-of-file</code>：</p>
+<pre><code>实例
+
+&lt;?php
+$myfile = fopen(&quot;webdictionary.txt&quot;, &quot;r&quot;) or die(&quot;Unable to open file!&quot;);
+// 输出单行直到 end-of-file
+while(!feof($myfile)) {
+  echo fgets($myfile) . &quot;&lt;br&gt;&quot;;
+}
+fclose($myfile);
+?&gt;
+</code></pre><p><strong>读取单字符 - fgetc()</strong></p>
+<p><code>fgetc()</code>函数用于从文件中读取单个字符。</p>
+<p><strong>创建文件 - fopen()</strong></p>
+<p><code>fopen()</code>函数也用于创建文件。也许有点混乱，但是在 PHP 中，创建文件所用的函数与打开文件的相同。</p>
+<p>如果您用 <code>fopen()</code>打开并不存在的文件，此函数会创建文件，假定文件被打开为写入（w）或增加（a）。</p>
+<p>文件权限</p>
+<p>如果您试图运行这段代码时发生错误，请检查您是否有向硬盘写入信息的 PHP 文件访问权限。</p>
+<p><strong>写入文件 - fwrite()</strong></p>
+<p><code>fwrite()</code> 函数用于写入文件。</p>
+<p><code>fwrite()</code> 的第一个参数包含要写入的文件的文件名，第二个参数是被写的字符串。</p>
+<p>下面的例子把姓名写入名为 “newfile.txt” 的新文件中：</p>
+<pre><code>实例
+
+&lt;?php
+$myfile = fopen(&quot;newfile.txt&quot;, &quot;w&quot;) or die(&quot;Unable to open file!&quot;);
+$txt = &quot;Bill Gates\n&quot;;
+fwrite($myfile, $txt);
+$txt = &quot;Steve Jobs\n&quot;;
+fwrite($myfile, $txt);
+fclose($myfile);
+?&gt;
+</code></pre><p>###什么是 Cookie？</p>
+<p><code>cookie</code>常用于识别用户。</p>
+<p><code>cookie</code> 是服务器留在用户计算机中的小文件。每当相同的计算机通过浏览器请求页面时，它同时会发送 <code>cookie</code>。通过 PHP，您能够创建并取回<code>cookie</code>的值。</p>
+<p>###PHP session </p>
+<p>变量用于存储有关用户会话的信息，或更改用户会话的设置。<code>Session</code> 变量保存的信息是单一用户的，并且可供应用程序中的所有页面使用。</p>
+<p><strong>Session 变量</strong></p>
+<p>当您运行一个应用程序时，您会打开它，做些更改，然后关闭它。这很像一次会话。计算机清楚你是谁。它知道你何时启动应用程序，并在何时终止。但是在因特网上，存在一个问题：服务器不知道你是谁以及你做什么，这是由于 HTTP 地址不能维持状态。</p>
+<p>通过在服务器上存储用户信息以便随后使用，<code>PHP session</code>解决了这个问题（比如用户名称、购买商品等）。不过，会话信息是临时的，在用户离开网站后将被删除。如果您需要永久储存信息，可以把数据存储在数据库中。</p>
+<p><code>Session</code> 的工作机制是：为每个访问者创建一个唯一的 id (UID)，并基于这个 UID 来存储变量。UID 存储在 <code>cookie</code> 中，亦或通过 URL 进行传导。</p>
+<p><strong>session_start()</strong></p>
+<p><code>session_start()</code>函数必须位于 <html> 标签之前：</html></p>
+<pre><code>&lt;?php session_start(); ?&gt;
+
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>上面的代码会向服务器注册用户的会话，以便您可以开始保存用户信息，同时会为用户会话分配一个 UID。</p>
+<p><strong>存储 Session 变量</strong></p>
+<p>存储和取回 <code>session</code> 变量的正确方法是使用<code>PHP $_SESSION</code> 变量</p>
+<p><strong>显示浏览用户数</strong></p>
+<p><code>isset()</code>函数检测是否已设置<code>&quot;views&quot;</code>变量。如果已设置 <code>&quot;views&quot;</code>变量，我们累加计数器。如果 <code>&quot;views&quot;</code>不存在，则我们创建 <code>&quot;views&quot;</code>变量，并把它设置为 1：</p>
+<pre><code>&lt;?php
+session_start();
+
+if(isset($_SESSION[&apos;views&apos;]))
+  $_SESSION[&apos;views&apos;]=$_SESSION[&apos;views&apos;]+1;
+
+else
+  $_SESSION[&apos;views&apos;]=1;
+echo &quot;Views=&quot;. $_SESSION[&apos;views&apos;];
+?&gt;
+</code></pre><p><strong>终结 Session</strong></p>
+<p>如果您希望删除某些 <code>session</code>数据，可以使用<code>unset()</code>或<code>session_destroy()</code>函数。</p>
+<p><code>unset()</code> 函数用于释放指定的<code>session</code>变量：</p>
+<pre><code>&lt;?php
+unset($_SESSION[&apos;views&apos;]);
+?&gt;
+
+您也可以通过 session_destroy() 函数彻底终结 session：
+
+&lt;?php
+session_destroy();
+?&gt;
+</code></pre><p>###PHP 错误处理</p>
+<p>不同的错误处理方法：</p>
+<ul>
+<li>简单的 “die()” 语句</li>
+<li>自定义错误和错误触发器</li>
+<li>错误报告</li>
+</ul>
+<p><strong>die() 函数</strong></p>
+<p>第一个例子展示了一个打开文本文件的简单脚本：</p>
+<pre><code>&lt;?php
+$file=fopen(&quot;welcome.txt&quot;,&quot;r&quot;);
+?&gt;
+</code></pre><p>如果文件不存在，您会获得类似这样的错误：</p>
+<pre><code>Warning: fopen(welcome.txt) [function.fopen]: failed to open stream: 
+No such file or directory in C:\webfolder\test.php on line 2
+</code></pre><p>为了避免用户获得类似上面的错误消息，我们在访问文件之前检测该文件是否存在：</p>
+<pre><code>&lt;?php
+if(!file_exists(&quot;welcome.txt&quot;))
+ {
+ die(&quot;File not found&quot;);
+ }
+else
+ {
+ $file=fopen(&quot;welcome.txt&quot;,&quot;r&quot;);
+ }
+?&gt;
+</code></pre><p>现在，假如文件不存在，您会得到类似这样的错误消息：</p>
+<pre><code>File not found
+</code></pre><p>###异常处理<br>异常（Exception）用于在指定的错误发生时改变脚本的正常流程。</p>
+<p><strong>Try, throw 和 catch</strong></p>
+<p>要避免上面例子出现的错误，我们需要创建适当的代码来处理异常。</p>
+<p>正确的处理程序应当包括：</p>
+<ul>
+<li>Try - 使用异常的函数应该位于 “try” 代码块内。如果没有触发异常，则代码将照常继续执行。但是如果异常被触发，会抛出一个异常。</li>
+<li>Throw - 这里规定如何触发异常。每一个 “throw” 必须对应至少一个 “catch”</li>
+<li>Catch - “catch” 代码块会捕获异常，并创建一个包含异常信息的对象</li>
+</ul>
+<p><strong>设置顶层异常处理器 （Top Level Exception Handler）</strong></p>
+<p><code>set_exception_handler()</code>函数可设置处理所有未捕获异常的用户定义函数。</p>
+<p>###PHP 过滤器（Filter）<br>PHP 过滤器用于验证和过滤来自非安全来源的数据，比如用户的输入。</p>
+<p>什么是外部数据？</p>
+<ul>
+<li>来自表单的输入数据</li>
+<li>Cookies</li>
+<li>服务器变量</li>
+<li>数据库查询结果</li>
+</ul>
+<p><strong>函数和过滤器</strong></p>
+<p>如需过滤变量，请使用下面的过滤器函数之一：</p>
+<ul>
+<li><code>filter_var()</code>- 通过一个指定的过滤器来过滤单一的变量</li>
+<li><code>filter_var_array()</code> - 通过相同的或不同的过滤器来过滤多个变量</li>
+<li><code>filter_input</code> - 获取一个输入变量，并对它进行过滤</li>
+<li><code>filter_input_array</code> - 获取多个输入变量，并通过相同的或不同的过滤器对它们进行过滤</li>
+</ul>
+<p>在下面的例子中，我们用 <code>filter_var()</code> 函数验证了一个整数：</p>
+<pre><code>&lt;?php
+$int = 123;
+
+if(!filter_var($int, FILTER_VALIDATE_INT))
+ {
+ echo(&quot;Integer is not valid&quot;);
+ }
+else
+ {
+ echo(&quot;Integer is valid&quot;);
+ }
+?&gt;
+</code></pre><p><strong>Validating 和 Sanitizing</strong></p>
+<p>有两种过滤器：</p>
+<p><code>Validating</code> 过滤器：</p>
+<ul>
+<li>用于验证用户输入</li>
+<li>严格的格式规则（比如 URL 或 E-Mail 验证）</li>
+<li>如果成功则返回预期的类型，如果失败则返回 FALSE</li>
+</ul>
+<p><code>Sanitizing</code> 过滤器：</p>
+<ul>
+<li>用于允许或禁止字符串中指定的字符</li>
+<li>无数据格式规则</li>
+<li>始终返回字符串</li>
+</ul>
+<p>###Mysql数据库</p>
+<p><strong>连接到一个 MySQL 数据库</strong></p>
+<p>在您能够访问并处理数据库中的数据之前，您必须创建到达数据库的连接。</p>
+<p>在 PHP 中，这个任务通过 <code>mysql_connect()</code>函数完成。<br>语法</p>
+<pre><code>mysql_connect(servername,username,password);
+</code></pre><p><strong>创建数据库</strong></p>
+<p><code>CREATE DATABASE</code> 语句用于在 <code>MySQL</code>中创建数据库。<br>语法</p>
+<pre><code>CREATE DATABASE database_name
+</code></pre><p>为了让 PHP 执行上面的语句，我们必须使用 <code>mysql_query()</code> 函数。</p>
+<pre><code>&lt;?php
+$con = mysql_connect(&quot;localhost&quot;,&quot;peter&quot;,&quot;abc123&quot;);
+if (!$con)
+  {
+  die(&apos;Could not connect: &apos; . mysql_error());
+  }
+
+if (mysql_query(&quot;CREATE DATABASE my_db&quot;,$con))
+  {
+  echo &quot;Database created&quot;;
+  }
+else
+  {
+  echo &quot;Error creating database: &quot; . mysql_error();
+  }
+
+mysql_close($con);
+?&gt;
+</code></pre><p><strong>创建表</strong></p>
+<p><code>CREATE TABLE</code>用于在 <code>MySQL</code> 中创建数据库表</p>
+<p>例子</p>
+<p>下面的例子展示了如何创建一个名为<code>&quot;Persons&quot;</code>的表，此表有三列。列名是<code>&quot;FirstName&quot;</code>, <code>&quot;LastName&quot;</code>以及<code>&quot;Age&quot;</code>：</p>
+<pre><code>&lt;?php
+$con = mysql_connect(&quot;localhost&quot;,&quot;peter&quot;,&quot;abc123&quot;);
+if (!$con)
+  {
+  die(&apos;Could not connect: &apos; . mysql_error());
+  }
+
+// Create database
+if (mysql_query(&quot;CREATE DATABASE my_db&quot;,$con))
+  {
+  echo &quot;Database created&quot;;
+  }
+else
+  {
+  echo &quot;Error creating database: &quot; . mysql_error();
+  }
+// Create table in my_db database
+mysql_select_db(&quot;my_db&quot;, $con);
+$sql = &quot;CREATE TABLE Persons 
+(
+FirstName varchar(15),
+LastName varchar(15),
+Age int
+)&quot;;
+mysql_query($sql,$con);
+
+mysql_close($con);
+?&gt;
+</code></pre><p><strong>向数据库表插入数据</strong><br>INSERT INTO 语句用于向数据库表添加新记录。<br>语法</p>
+<pre><code>INSERT INTO table_name
+VALUES (value1, value2,....)
+</code></pre><p>您还可以规定希望在其中插入数据的列：</p>
+<pre><code>INSERT INTO table_name (column1, column2,...)
+VALUES (value1, value2,....)
+</code></pre><p>实例</p>
+<pre><code>&lt;?php
+$con = mysql_connect(&quot;localhost&quot;,&quot;peter&quot;,&quot;abc123&quot;);
+if (!$con)
+  {
+  die(&apos;Could not connect: &apos; . mysql_error());
+  }
+
+mysql_select_db(&quot;my_db&quot;, $con);
+
+mysql_query(&quot;INSERT INTO Persons (FirstName, LastName, Age) 
+VALUES (&apos;Peter&apos;, &apos;Griffin&apos;, &apos;35&apos;)&quot;);
+
+mysql_query(&quot;INSERT INTO Persons (FirstName, LastName, Age) 
+VALUES (&apos;Glenn&apos;, &apos;Quagmire&apos;, &apos;33&apos;)&quot;);
+
+mysql_close($con);
+?&gt;
+</code></pre><h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><p>mt_rand($min,$max) 随机数</p>
+<p>解决页面乱码：header(content-type:text/html;)</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;PHP-变量规则：&quot;&gt;&lt;a href=&quot;#PHP-变量规则：&quot; class=&quot;headerlink&quot; title=&quot;PHP 变量规则：&quot;&gt;&lt;/a&gt;PHP 变量规则：&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;变量以 $ 符号开头，其后是变量的名称&lt;/li&gt;
+&lt;li&gt;变量名称必须以
+    
+    </summary>
+    
+    
+      <category term="php" scheme="http://thornvbear.com/tags/php/"/>
+    
+  </entry>
   
   <entry>
     <title>Xcode 8.0姗姗来迟</title>
