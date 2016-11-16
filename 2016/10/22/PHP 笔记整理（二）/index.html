@@ -1,0 +1,923 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="php," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="王绵杰的个人博客" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="php常用开发库图表库下面的类库可以让你很简单就能创建复杂的图表和图片。当然，它们需要GD库的支持。
+
+pChart - 一个可以创建统计图的库。
+Libchart - 这也是一个简单的统计图库。
+JpGraph - 一个面向对象的图片创建类。 
+Open Flash Chart - 这是一个基于Flash的统计图。
+
+RSS 解析解释RSS并是一件很单调的事情，不过幸好你有下面的类库可以帮助你方">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP 笔记整理（二）">
+<meta property="og:url" content="http://thornvbear.com/2016/10/22/PHP 笔记整理（二）/index.html">
+<meta property="og:site_name" content="王绵杰的个人博客">
+<meta property="og:description" content="php常用开发库图表库下面的类库可以让你很简单就能创建复杂的图表和图片。当然，它们需要GD库的支持。
+
+pChart - 一个可以创建统计图的库。
+Libchart - 这也是一个简单的统计图库。
+JpGraph - 一个面向对象的图片创建类。 
+Open Flash Chart - 这是一个基于Flash的统计图。
+
+RSS 解析解释RSS并是一件很单调的事情，不过幸好你有下面的类库可以帮助你方">
+<meta property="og:updated_time" content="2016-11-16T05:22:22.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PHP 笔记整理（二）">
+<meta name="twitter:description" content="php常用开发库图表库下面的类库可以让你很简单就能创建复杂的图表和图片。当然，它们需要GD库的支持。
+
+pChart - 一个可以创建统计图的库。
+Libchart - 这也是一个简单的统计图库。
+JpGraph - 一个面向对象的图片创建类。 
+Open Flash Chart - 这是一个基于Flash的统计图。
+
+RSS 解析解释RSS并是一件很单调的事情，不过幸好你有下面的类库可以帮助你方">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://thornvbear.com/2016/10/22/PHP 笔记整理（二）/"/>
+
+
+
+
+
+  <title> PHP 笔记整理（二） | 王绵杰的个人博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">王绵杰的个人博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">STAY HUNGRY ！ STAY FOOLISH ！</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://thornvbear.com/2016/10/22/PHP 笔记整理（二）/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Thon Wang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://dn-thornstep.qbox.me/thronvbear_blog_avatarImage.JPG">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="王绵杰的个人博客">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="王绵杰的个人博客" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                PHP 笔记整理（二）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-10-22T13:42:13+08:00">
+              2016-10-22
+            </time>
+
+            &nbsp;|&nbsp;
+
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-check-o"></i>
+            </span>
+            <time title="Post modified" itemprop="dateModified" datetime="2016-11-16T13:22:22+08:00">
+              2016-11-16
+            </time>
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/10/22/PHP 笔记整理（二）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/22/PHP 笔记整理（二）/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/10/22/PHP 笔记整理（二）/" class="leancloud_visitors" data-flag-title="PHP 笔记整理（二）">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="php常用开发库"><a href="#php常用开发库" class="headerlink" title="php常用开发库"></a>php常用开发库</h1><h2 id="图表库"><a href="#图表库" class="headerlink" title="图表库"></a>图表库</h2><p>下面的类库可以让你很简单就能创建复杂的图表和图片。当然，它们需要GD库的支持。</p>
+<ul>
+<li><a href="http://pchart.sourceforge.net/" target="_blank" rel="external"><strong>pChart</strong></a> - 一个可以创建统计图的库。</li>
+<li><a href="https://naku.dohcrew.com/libchart/pages/introduction/" target="_blank" rel="external"><strong>Libchart</strong></a> - 这也是一个简单的统计图库。</li>
+<li><a href="http://www.aditus.nu/jpgraph/" target="_blank" rel="external"><strong>JpGraph</strong></a> - 一个面向对象的图片创建类。 </li>
+<li><a href="http://teethgrinder.co.uk/open-flash-chart/" target="_blank" rel="external"><strong>Open Flash Chart</strong></a> - 这是一个基于Flash的统计图。</li>
+</ul>
+<h2 id="RSS-解析"><a href="#RSS-解析" class="headerlink" title="RSS 解析"></a>RSS 解析</h2><p>解释<mark>RSS</mark>并是一件很单调的事情，不过幸好你有下面的类库可以帮助你方便地读取RSS的Feed。</p>
+<ul>
+<li><a href="http://magpierss.sourceforge.net/" target="_blank" rel="external"><strong>MagpieRSS</strong></a> - 开源的PHP版RSS解析器，据说功能强大，未验证。</li>
+<li><a href="http://simplepie.org/" target="_blank" rel="external"><strong>SimplePie</strong></a> - 这是一个非常快速，而且易用的RSS和Atom 解析库。</li>
+</ul>
+<h2 id="缩略图生成"><a href="#缩略图生成" class="headerlink" title="缩略图生成"></a>缩略图生成</h2><ul>
+<li><a href="http://phpthumb.sourceforge.net/" target="_blank" rel="external"><strong>phpThumb</strong></a> - 功能很强大，如何强大还是自己去体会吧。</li>
+</ul>
+<h2 id="支付"><a href="#支付" class="headerlink" title="支付"></a>支付</h2><p>你的网站需要处理支付方面的事情？需要一个和支付网关的程序？下面这个程序可以帮到你。</p>
+<ul>
+<li><a href="http://phpfour.com/php-payment-gateway-library-for-paypal-authorizenet-and-2checkout/" target="_blank" rel="external"><strong>PHP Payment Library</strong></a> - 支持Paypal, Authorize.net 和2Checkout (2CO)</li>
+</ul>
+<h2 id="OpenID"><a href="#OpenID" class="headerlink" title="OpenID"></a>OpenID</h2><ul>
+<li><a href="http://www.openidenabled.com/php-openid/" target="_blank" rel="external"><strong>PHP-OpenID</strong></a> - 支持OpenID的一个PHP库。OpenID是帮助你使用相同的用户名和口令登录不同的网站的一种解决方案。如果你对OpenID不熟悉的话，你可以到这里看看：<a href="http://openid.net.cn/" target="_blank" rel="external">http://openid.net.cn/</a></li>
+</ul>
+<h2 id="数据为抽象-对象关系映射ORM"><a href="#数据为抽象-对象关系映射ORM" class="headerlink" title="数据为抽象/对象关系映射ORM"></a>数据为抽象/对象关系映射ORM</h2><ul>
+<li><a href="http://adodb.sourceforge.net/" target="_blank" rel="external"><strong>ADOdb</strong></a> - 数据库抽象</li>
+<li><a href="http://www.doctrine-project.org/" target="_blank" rel="external"><strong>Doctrine</strong></a> - 对象关系映射 <code>Object relational mapper (ORM)</code>，需要 <code>PHP 5.2.3+</code> 版本，一个非常强大的<code>database abstraction layer (DBAL)</code>.</li>
+<li><a href="http://propel.phpdb.org/trac/" target="_blank" rel="external"><strong>Propel</strong></a> - 对象关系映射框架- PHP5</li>
+<li><a href="http://outlet-orm.org/" target="_blank" rel="external"><strong>Outlet</strong></a> - 也是关于对象关系映射的一个工具。</li>
+</ul>
+<p>注： 对象关系映射（Object Relational Mapping，简称ORM）是一种为了解决面向对象与关系数据库存在的互不匹配的现象的技术。简单的说，ORM是通过使用描述对象和数据库之间映射的元数据，将程序中的对象自动持久化到关系数据库中。本质上就是将数据从一种形式转换到另外一种形式。这也同时暗示者额外的执行开销；然而，如果ORM作为一 种中间件实现，则会有很多机会做优化，而这些在手写的持久层并不存在。更重要的是用于控制转换的元数据需要提供和管理；但是同样，这些花费要比维护手写的方案要少；而且就算是遵守ODMG规范的对象数据库依然需要类级别的元数据。</p>
+<h2 id="PDF-生成器"><a href="#PDF-生成器" class="headerlink" title="PDF 生成器"></a>PDF 生成器</h2><ul>
+<li><a href="http://www.fpdf.org/" target="_blank" rel="external"><strong>FPDF</strong></a> - 这量一个可以让你生成PDF的纯PHP类库。</li>
+</ul>
+<h2 id="Excel-相关"><a href="#Excel-相关" class="headerlink" title="Excel 相关"></a>Excel 相关</h2><p>你的站点需要生成 Excel？没有问题，下面这两个类库可以让你轻松做到这一点。</p>
+<ul>
+<li><a href="http://code.google.com/p/php-excel/" target="_blank" rel="external"><strong>php-excel</strong></a> - 这是一个非常简单的Excel文件生成类。</li>
+<li><a href="http://code.google.com/p/php-excel-reader/" target="_blank" rel="external"><strong>PHP Excel Reader</strong></a> - 可以解析并读取XLS文件中的数据。</li>
+</ul>
+<h2 id="E-Mail-相关"><a href="#E-Mail-相关" class="headerlink" title="E-Mail 相关"></a>E-Mail 相关</h2><p>不喜欢PHP的mail函数？觉得不够强大？下面的PHP邮件相关的库绝对不会让你失望。</p>
+<ul>
+<li><a href="http://swiftmailer.org/" target="_blank" rel="external"><strong>Swift Mailer</strong></a> - 免费的超多功能的PHP邮件库。</li>
+<li><a href="http://phpmailer.codeworxtech.com/" target="_blank" rel="external"><strong>PHPMailer</strong></a> - 超强大的邮件发送类。</li>
+</ul>
+<h2 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h2><p>如果你在使用测试驱动的方法开发你的程序，下面的类库和框架绝你能帮助你的开发。</p>
+<ul>
+<li><a href="http://www.simpletest.org/" target="_blank" rel="external"><strong>SimpleTest</strong></a> - 一个PHP的单元测试和网页测试的框架。</li>
+<li><a href="http://www.phpunit.de/" target="_blank" rel="external"><strong>PHPUnit</strong></a> - 来自xUnit 家族，提供一个框架可以让你方便地进行单元测试的案例开发。并可非常容易地分析其测试结果。</li>
+</ul>
+<h2 id="PHP-Markdown-解析器"><a href="#PHP-Markdown-解析器" class="headerlink" title="PHP Markdown 解析器"></a>PHP Markdown 解析器</h2><ul>
+<li><a href="https://github.com/thephpleague/commonmark" target="_blank" rel="external"><strong>CommonMark</strong></a> - 是基于 CommonMark 规范的 PHP Markdown 解析器。</li>
+</ul>
+<h1 id="响应式网站的最佳PHP框架"><a href="#响应式网站的最佳PHP框架" class="headerlink" title="响应式网站的最佳PHP框架"></a>响应式网站的最佳PHP框架</h1><p>目前，网上有大量的框架供大家选择，本文分享9款各方面都兼具优势的PHP框架，主要用来构建响应式网站。</p>
+<h2 id="Symfony"><a href="#Symfony" class="headerlink" title="Symfony"></a>Symfony</h2><p><a href="https://github.com/symfony" target="_blank" rel="external"><strong>Symfony</strong></a> - 一个开源的PHP框架，它在速度和灵活性方面都兼具优势。它提供了一套解决特定工程问题的概念和工具，帮助广大开发者减少重复性工作。抽象化意味着能用更简洁的东西表达复杂的概念、流程等。</p>
+<h2 id="Phalcon"><a href="#Phalcon" class="headerlink" title="Phalcon"></a>Phalcon</h2><p>如果你想提高网站速度，你可以试试<a href="https://phalconphp.com/en/" target="_blank" rel="external"><strong>Phalcon</strong></a>框架。基于C语言开发，也是目前市场上最快的一款PHP框架。 开发者不需要学习和使用C语言功能， 因为所有功能都以PHP类的方式暴露出来，可以直接使用。Phalcon也是松耦合的，可以根据项目的需要任意使用其它对象。</p>
+<h2 id="Laravel"><a href="#Laravel" class="headerlink" title="Laravel"></a>Laravel</h2><p><a href="https://github.com/laravel/laravel" target="_blank" rel="external"><strong>Laravel</strong></a> - 2016年最流行的PHP框架，也是最容易学习的开发框架，开发者只需一个脚本就可以实现一个网站功能。它最强大的特征是具有一个个性化的模板引擎，称作“Blade”，并且在网站上无任何性能开销。</p>
+<h2 id="Yii"><a href="#Yii" class="headerlink" title="Yii"></a>Yii</h2><p><a href="http://www.yiiframework.com/" target="_blank" rel="external"><strong>Yii</strong></a> - 一个基于组件、用于开发大型Web应用的高性能PHP框架。Yii几乎提供了今日Web 2.0应用开发所需要的一切功能。Yii是最有效率的PHP框架之一。Yii里面的Gii是一个功能强大的代码生成器，基于网络，开发者使用它可以轻易地生成表单、模块、CRUD、模型等。</p>
+<h2 id="CodeIgniter"><a href="#CodeIgniter" class="headerlink" title="CodeIgniter"></a>CodeIgniter</h2><p><a href="http://www.codeigniter.com/" target="_blank" rel="external"><strong>Codeigniter</strong></a> - 一个非常简单且功能全面的Web开发构建包，其体积只有2MB。它提供一套丰富的标准库以及简单的接口和逻辑结构，其目的是使开发人员更快速地进行项目开发。使用CodeIgniter可以减少代码编写量，并将你的精力投入到项目的创造性开发上。</p>
+<h2 id="Cake"><a href="#Cake" class="headerlink" title="Cake"></a>Cake</h2><p><a href="https://cakephp.org/" target="_blank" rel="external"><strong>Cake</strong></a> - 一款非常适合商业网站开发的PHP框架，因缺乏YAML或XML文件，所以它无需配置。它提供程序员所需要的基本体系架构，因此程序员可以使用它更快速且不失灵活性地创建网络应用程序。而这就是我们创造CakePHP的首要目的。</p>
+<p>CakePHP拥有一个活跃的开发团队和社区，使CakePHP本身更具备应有的价值。另外，使用CakePHP也意味着您的应用程序将更容易测试，也更容易被改良、更新。</p>
+<h2 id="ZendPHP"><a href="#ZendPHP" class="headerlink" title="ZendPHP"></a>ZendPHP</h2><p><a href="https://framework.zend.com/" target="_blank" rel="external"><strong>ZendPHP</strong></a> - 已经被各大网站采用，比如BBC、BNP Paribas或Cisco WebEx，所以你可以放心使用该框架。</p>
+<p>ZendPHP使用MVC三层架构，并且是一个完全面向对象的框架。组件非常丰富，且组件之间耦合很松散。简单说就是，各组件之间的依赖性非常低，基本上每个组件都可以单独拿出来使用。</p>
+<h2 id="FuelPHP"><a href="#FuelPHP" class="headerlink" title="FuelPHP"></a>FuelPHP</h2><p><a href="https://github.com/fuel/fuel" target="_blank" rel="external"><strong>FuelPHP</strong></a> - 一个简单、灵活的PHP 5.3 Web框架，其思路结合了来自主流框架的优点。它也是一个MVC框架，并且支持HMVC。</p>
+<h2 id="Slim"><a href="#Slim" class="headerlink" title="Slim"></a>Slim</h2><p><a href="http://www.slimframework.com/" target="_blank" rel="external"><strong>Slim</strong></a> - 一个非常轻量和微小的PHP框架，尽管如此，开发者仍然可以开发出非常强大的Web站点。它具有流线型的路由器、自定义视图呈现的模板渲染功能、安全cookies、flash消息和一个简单的配置过程、HTTP缓存、错误处理等。</p>
+<p><strong>未完，继续中。。。</strong></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/php/" rel="tag"># php</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/14/xcode8姗姗来迟/" rel="next" title="Xcode 8.0姗姗来迟">
+                <i class="fa fa-chevron-left"></i> Xcode 8.0姗姗来迟
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/10/22/PHP 笔记整理（二）/"
+           data-title="PHP 笔记整理（二）" data-url="http://thornvbear.com/2016/10/22/PHP 笔记整理（二）/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://dn-thornstep.qbox.me/thronvbear_blog_avatarImage.JPG"
+               alt="Thon Wang" />
+          <p class="site-author-name" itemprop="name">Thon Wang</p>
+          <p class="site-description motion-element" itemprop="description">本博客主要记录自己的学习和生活，有关技术方便若有浅尝辄止、分析不足的地方，还请指出！</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/ThornDev" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/u014783027" target="_blank" title="Pre Blog">
+                  
+                    <i class="fa fa-fw fa-inbox"></i>
+                  
+                  Pre Blog
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.bootcss.com/p/font-awesome/#" target="_blank" title="FontA">
+                  
+                    <i class="fa fa-fw fa-fire"></i>
+                  
+                  FontA
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.devtang.com" title="唐巧的技术博客" target="_blank">唐巧的技术博客</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#php常用开发库"><span class="nav-number">1.</span> <span class="nav-text">php常用开发库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#图表库"><span class="nav-number">1.1.</span> <span class="nav-text">图表库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RSS-解析"><span class="nav-number">1.2.</span> <span class="nav-text">RSS 解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缩略图生成"><span class="nav-number">1.3.</span> <span class="nav-text">缩略图生成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#支付"><span class="nav-number">1.4.</span> <span class="nav-text">支付</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OpenID"><span class="nav-number">1.5.</span> <span class="nav-text">OpenID</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据为抽象-对象关系映射ORM"><span class="nav-number">1.6.</span> <span class="nav-text">数据为抽象/对象关系映射ORM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PDF-生成器"><span class="nav-number">1.7.</span> <span class="nav-text">PDF 生成器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Excel-相关"><span class="nav-number">1.8.</span> <span class="nav-text">Excel 相关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#E-Mail-相关"><span class="nav-number">1.9.</span> <span class="nav-text">E-Mail 相关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单元测试"><span class="nav-number">1.10.</span> <span class="nav-text">单元测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PHP-Markdown-解析器"><span class="nav-number">1.11.</span> <span class="nav-text">PHP Markdown 解析器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#响应式网站的最佳PHP框架"><span class="nav-number">2.</span> <span class="nav-text">响应式网站的最佳PHP框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Symfony"><span class="nav-number">2.1.</span> <span class="nav-text">Symfony</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Phalcon"><span class="nav-number">2.2.</span> <span class="nav-text">Phalcon</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Laravel"><span class="nav-number">2.3.</span> <span class="nav-text">Laravel</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Yii"><span class="nav-number">2.4.</span> <span class="nav-text">Yii</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CodeIgniter"><span class="nav-number">2.5.</span> <span class="nav-text">CodeIgniter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cake"><span class="nav-number">2.6.</span> <span class="nav-text">Cake</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ZendPHP"><span class="nav-number">2.7.</span> <span class="nav-text">ZendPHP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FuelPHP"><span class="nav-number">2.8.</span> <span class="nav-text">FuelPHP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Slim"><span class="nav-number">2.9.</span> <span class="nav-text">Slim</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Thon Wang</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"thornvbear"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("3HWxI4CHdU8auWVasBDvYYHf-gzGzoHsz", "xNzv7WKP3ignuxpzn11LEBpT");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>
