@@ -619,7 +619,7 @@ mysql_close($con);
     <link href="http://thornvbear.com/2016/07/31/PHP%20%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
     <id>http://thornvbear.com/2016/07/31/PHP 笔记整理（二）/</id>
     <published>2016-07-31T12:24:01.000Z</published>
-    <updated>2016-11-16T05:13:34.000Z</updated>
+    <updated>2016-11-16T05:15:46.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="php常用开发库"><a href="#php常用开发库" class="headerlink" title="php常用开发库"></a>php常用开发库</h1><h2 id="图表库"><a href="#图表库" class="headerlink" title="图表库"></a>图表库</h2><p>下面的类库可以让你很简单就能创建复杂的图表和图片。当然，它们需要GD库的支持。</p>
 <ul>
@@ -681,7 +681,7 @@ mysql_close($con);
 <p>CakePHP拥有一个活跃的开发团队和社区，使CakePHP本身更具备应有的价值。另外，使用CakePHP也意味着您的应用程序将更容易测试，也更容易被改良、更新。</p>
 <h2 id="ZendPHP"><a href="#ZendPHP" class="headerlink" title="ZendPHP"></a>ZendPHP</h2><p><a href="https://framework.zend.com/" target="_blank" rel="external">ZendPHP</a> - 已经被各大网站采用，比如BBC、BNP Paribas或Cisco WebEx，所以你可以放心使用该框架。</p>
 <p>ZendPHP使用MVC三层架构，并且是一个完全面向对象的框架。组件非常丰富，且组件之间耦合很松散。简单说就是，各组件之间的依赖性非常低，基本上每个组件都可以单独拿出来使用。</p>
-<h2 id="FuelPHP"><a href="#FuelPHP" class="headerlink" title="FuelPHP"></a>FuelPHP</h2><p><a href="https://dv0.accella.tokyo/" target="_blank" rel="external">FuelPHP</a> - 一个简单、灵活的PHP 5.3 Web框架，其思路结合了来自主流框架的优点。它也是一个MVC框架，并且支持HMVC。</p>
+<h2 id="FuelPHP"><a href="#FuelPHP" class="headerlink" title="FuelPHP"></a>FuelPHP</h2><p><a href="https://github.com/fuel/fuel" target="_blank" rel="external">FuelPHP</a> - 一个简单、灵活的PHP 5.3 Web框架，其思路结合了来自主流框架的优点。它也是一个MVC框架，并且支持HMVC。</p>
 <h2 id="Slim"><a href="#Slim" class="headerlink" title="Slim"></a>Slim</h2><p><a href="http://www.slimframework.com/" target="_blank" rel="external">Slim</a> - 一个非常轻量和微小的PHP框架，尽管如此，开发者仍然可以开发出非常强大的Web站点。它具有流线型的路由器、自定义视图呈现的模板渲染功能、安全cookies、flash消息和一个简单的配置过程、HTTP缓存、错误处理等。</p>
 <p><strong>未完，继续中。。。</strong></p>
 ]]></content>
