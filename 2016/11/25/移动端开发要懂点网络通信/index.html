@@ -92,7 +92,7 @@
 <meta property="og:url" content="http://thornvbear.com/2016/11/25/移动端开发要懂点网络通信/index.html">
 <meta property="og:site_name" content="王绵杰的个人博客">
 <meta property="og:description" content="TCP协议与UDP协议的区别首先咱们弄清楚，TCP协议和UCP协议与TCP/IP协议的联系，很多人犯糊涂了，一直都是说TCP/IP协议与UDP协议的区别，我觉得这是没有从本质上弄清楚网络通信！TCP/IP协议是一个协议簇。里面包括很多协议的。UDP只是其中的一个。之所以命名为TCP/IP协议，因为TCP,IP协议是两个很重要的协议，就用他两命名了。TCP/IP协议集包括应用层,传输层，网络层，网络">
-<meta property="og:updated_time" content="2016-11-29T02:42:51.000Z">
+<meta property="og:updated_time" content="2016-12-02T06:38:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="移动端开发要懂点网络通信！">
 <meta name="twitter:description" content="TCP协议与UDP协议的区别首先咱们弄清楚，TCP协议和UCP协议与TCP/IP协议的联系，很多人犯糊涂了，一直都是说TCP/IP协议与UDP协议的区别，我觉得这是没有从本质上弄清楚网络通信！TCP/IP协议是一个协议簇。里面包括很多协议的。UDP只是其中的一个。之所以命名为TCP/IP协议，因为TCP,IP协议是两个很重要的协议，就用他两命名了。TCP/IP协议集包括应用层,传输层，网络层，网络">
@@ -305,8 +305,8 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-check-o"></i>
             </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2016-11-29T10:42:51+08:00">
-              2016-11-29
+            <time title="Post modified" itemprop="dateModified" datetime="2016-12-02T14:38:29+08:00">
+              2016-12-02
             </time>
             
           </span>
@@ -370,7 +370,7 @@
 </li>
 </ul>
 <p>最后说网络访问层:网络访问层又称作主机到网络层(host-to-network).网络访问层的功能包括IP地址与物理地址硬件的映射,以及将IP封装成帧.基于不同硬件类型的网络接口,网络访问层定义了和物理介质的连接.<br>当然我这里说得不够完善，TCP/IP协议本来就是一门学问，每一个分支都是一个很复杂的流程，但我相信每位学习软件开发的同学都有必要去仔细了解一番。</p>
-<h3 id="TCP协议和UDP协议的区别。"><a href="#TCP协议和UDP协议的区别。" class="headerlink" title="TCP协议和UDP协议的区别。"></a>TCP协议和UDP协议的区别。</h3><p>TCP（Transmission Control Protocol，传输控制协议）是面向连接的协议，也就是说，在收发数据前，必须和对方建立可靠的连接。一个TCP连接必须要经过三次“对话”才能建立起来，其中的过程非常复杂，只简单的描述下这三次对话的简单过程：主机A向主机B发出连接请求数据包：“我想给你发数据，可以吗？”，这是第一次对话；主机B向主机A发送同意连接和要求同步（同步就是两台主机一个在发送，一个在接收，协调工作）的数据包：“可以，你什么时候发？”，这是第二次对话；主机A再发出一个数据包确认主机B的要求同步：“我现在就发，你接着吧！”，这是第三次对话。三次“对话”的目的是使数据包的发送和接收同步，经过三次“对话”之后，主机A才向主机B正式发送数据。<br>详细点说就是：（文章部分转载<a href="http://zhangjiangxing-gmail-com.iteye.com，主要是这个人讲解得很到位，的确很容易使人理解！）" target="_blank" rel="external">http://zhangjiangxing-gmail-com.iteye.com，主要是这个人讲解得很到位，的确很容易使人理解！）</a></p>
+<h3 id="TCP（Transmission-Control-Protocol，传输控制协议）"><a href="#TCP（Transmission-Control-Protocol，传输控制协议）" class="headerlink" title="TCP（Transmission Control Protocol，传输控制协议）"></a>TCP（Transmission Control Protocol，传输控制协议）</h3><p>TCP（Transmission Control Protocol，传输控制协议）是面向连接的协议，也就是说，在收发数据前，必须和对方建立可靠的连接。一个TCP连接必须要经过三次“对话”才能建立起来，其中的过程非常复杂，只简单的描述下这三次对话的简单过程：主机A向主机B发出连接请求数据包：“我想给你发数据，可以吗？”，这是第一次对话；主机B向主机A发送同意连接和要求同步（同步就是两台主机一个在发送，一个在接收，协调工作）的数据包：“可以，你什么时候发？”，这是第二次对话；主机A再发出一个数据包确认主机B的要求同步：“我现在就发，你接着吧！”，这是第三次对话。三次“对话”的目的是使数据包的发送和接收同步，经过三次“对话”之后，主机A才向主机B正式发送数据。<br>详细点说就是：（文章部分转载<a href="http://zhangjiangxing-gmail-com.iteye.com，主要是这个人讲解得很到位，的确很容易使人理解！）" target="_blank" rel="external">http://zhangjiangxing-gmail-com.iteye.com，主要是这个人讲解得很到位，的确很容易使人理解！）</a></p>
 <h3 id="TCP三次握手过程"><a href="#TCP三次握手过程" class="headerlink" title="TCP三次握手过程"></a>TCP三次握手过程</h3><ul>
 <li>1 主机A通过向主机B 发送一个含有同步序列号的标志位的数据段给主机B ,向主机B 请求建立连接,通过这个数据段,<br>主机A告诉主机B 两件事:我想要和你通信;你可以用哪个序列号作为起始数据段来回应我.</li>
 <li>2 主机B 收到主机A的请求后,用一个带有确认应答(ACK)和同步序列号(SYN)标志位的数据段响应主机A,也告诉主机A两件事:<br>我已经收到你的请求了,你可以传输数据了;你要用哪佧序列号作为起始数据段来回应我</li>
@@ -631,7 +631,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP协议与UDP协议的区别"><span class="nav-number">1.</span> <span class="nav-text">TCP协议与UDP协议的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP协议和UDP协议的区别。"><span class="nav-number">2.</span> <span class="nav-text">TCP协议和UDP协议的区别。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP三次握手过程"><span class="nav-number">3.</span> <span class="nav-text">TCP三次握手过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP建立连接要进行3次握手-而断开连接要进行4次"><span class="nav-number">4.</span> <span class="nav-text">TCP建立连接要进行3次握手,而断开连接要进行4次</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#名词解释"><span class="nav-number">5.</span> <span class="nav-text">名词解释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP的包头结构："><span class="nav-number">6.</span> <span class="nav-text">TCP的包头结构：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UDP（User-Data-Protocol，用户数据报协议）"><span class="nav-number">7.</span> <span class="nav-text">UDP（User Data Protocol，用户数据报协议）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UDP的包头结构："><span class="nav-number">8.</span> <span class="nav-text">UDP的包头结构：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小结TCP与UDP的区别："><span class="nav-number">9.</span> <span class="nav-text">小结TCP与UDP的区别：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP协议与UDP协议的区别"><span class="nav-number">1.</span> <span class="nav-text">TCP协议与UDP协议的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP（Transmission-Control-Protocol，传输控制协议）"><span class="nav-number">2.</span> <span class="nav-text">TCP（Transmission Control Protocol，传输控制协议）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP三次握手过程"><span class="nav-number">3.</span> <span class="nav-text">TCP三次握手过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP建立连接要进行3次握手-而断开连接要进行4次"><span class="nav-number">4.</span> <span class="nav-text">TCP建立连接要进行3次握手,而断开连接要进行4次</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#名词解释"><span class="nav-number">5.</span> <span class="nav-text">名词解释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP的包头结构："><span class="nav-number">6.</span> <span class="nav-text">TCP的包头结构：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UDP（User-Data-Protocol，用户数据报协议）"><span class="nav-number">7.</span> <span class="nav-text">UDP（User Data Protocol，用户数据报协议）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UDP的包头结构："><span class="nav-number">8.</span> <span class="nav-text">UDP的包头结构：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小结TCP与UDP的区别："><span class="nav-number">9.</span> <span class="nav-text">小结TCP与UDP的区别：</span></a></li></ol></div>
             
 
           </div>
