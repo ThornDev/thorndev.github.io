@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://thornvbear.com/"/>
-  <updated>2016-12-14T14:53:17.000Z</updated>
+  <updated>2016-12-14T14:53:52.000Z</updated>
   <id>http://thornvbear.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://thornvbear.com/2016/12/14/Docker%E7%B3%BB%E5%88%97%E4%B9%8B%E4%BB%80%E4%B9%88%E6%98%AFDocker%E9%95%9C%E5%83%8F%E3%80%81%E5%AE%B9%E5%99%A8%E5%92%8C%E4%BB%93%E5%BA%93/"/>
     <id>http://thornvbear.com/2016/12/14/Docker系列之什么是Docker镜像、容器和仓库/</id>
     <published>2016-12-14T05:24:38.000Z</published>
-    <updated>2016-12-14T14:53:17.000Z</updated>
+    <updated>2016-12-14T14:53:52.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="Docker生命周期"><a href="#Docker生命周期" class="headerlink" title="Docker生命周期"></a>Docker生命周期</h3><p>Docker 包括三个基本概念:</p>
 <ul>
@@ -34,8 +34,7 @@
 <p>Docker的镜像实际上由一层一层的文件系统组成，这种层级的文件系统被称为UnionFS。镜像可以基于Dockerfile构建，Dockerfile是一个描述文件，里面包含若干条命令，每条命令都会对基础文件系统创建新的层次结构。</p>
 <p>Docker 提供了一个很简单的机制来创建镜像或者更新现有的镜像，用户甚至可以直接从其他人那里下载一个已经做好的镜像来直接使用。</p>
 <p><strong>注：镜像是只读的，可以理解为静态文件。</strong></p>
-<p>###Docker容器</p>
-<p>Docker 利用容器来运行应用。</p>
+<h3 id="Docker容器"><a href="#Docker容器" class="headerlink" title="Docker容器"></a>Docker容器</h3><p>Docker 利用容器来运行应用。</p>
 <p>Docker容器是由Docker镜像创建的运行实例。Docker容器类似虚拟机，可以支持的操作包括启动，停止，删除等。每个容器间是相互隔离的，容器中会运行特定的应用，包含特定应用的代码及所需的依赖文件。</p>
 <p>可以把容器看做是一个简易版的 Linux 环境（包括root用户权限、进程空间、用户空间和网络空间等）和运行在其中的应用程序。</p>
 <p><strong>注：相对于镜像来说容器是动态的，容器在启动的时候创建一层可写层作为最上层。</strong></p>
