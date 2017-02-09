@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://thornvbear.com/"/>
-  <updated>2016-12-31T13:44:03.000Z</updated>
+  <updated>2017-02-09T12:58:56.000Z</updated>
   <id>http://thornvbear.com/</id>
   
   <author>
@@ -14,6 +14,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>服务器使用docker部署nginx和php</title>
+    <link href="http://thornvbear.com/2017/02/09/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8docker%E9%83%A8%E7%BD%B2nginx%E5%92%8Cphp/"/>
+    <id>http://thornvbear.com/2017/02/09/服务器使用docker部署nginx和php/</id>
+    <published>2017-02-09T12:57:11.000Z</published>
+    <updated>2017-02-09T12:58:56.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>docker提供了在服务端分布式的部署应用，这样的好处是方便维护和升级。</p>
+<p>接下来我来介绍一些我在自己的服务器是如何使用docker部署nginx和php的。</p>
+<p>首先需要在服务器端安装docker，这个不是本篇文章的重点所以就不详加叙述了，具体docker的安装方法在docker的官网上有，而且非常详细，按照官网提供的步骤一步一步来就可以安装成功。</p>
+<h3 id="接下来就开始介绍具体部署的过程："><a href="#接下来就开始介绍具体部署的过程：" class="headerlink" title="接下来就开始介绍具体部署的过程："></a>接下来就开始介绍具体部署的过程：</h3><p>下载或者构建需要的php和nginx的镜像。这里我使用的nginx镜像是docker官网提供的nginx镜像，php的镜像是使用ubuntu:16.04的镜像构建的php镜像。php的版本是PHP 7.0.8-0ubuntu0.16.04.3 (cli) ( NTS )。注意如果php启动是需要php-fpm。php5.3以上版本fpm就内建在php内。如果是5.3一下需要在另外安装编译php，具体的教程可是可以找到的。nginx的版本是nginx/1.11.6。这个是现在目前docker官网最新的版本。具体的执行的命令有：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div></pre></td><td class="code"><pre><div class="line">docker search nginx    在官网的仓库中搜索nginx的镜像</div><div class="line"></div><div class="line">docker search nginx:version    nginx:version 是指定nginx的版本进行搜索。例如要安装nginx1.8.1,那么命令就是docker search nginx:1.8.1</div><div class="line"></div><div class="line">docker pull $ImageName:Desciption    根据search返回的镜像列表，选择要下载的镜像。</div><div class="line"></div><div class="line">上面的是给大家做一些介绍，下面是我下载和构建容器使用的方法：</div><div class="line"></div><div class="line">docker pull nginx  下载官方nginx镜像</div><div class="line"></div><div class="line">docker pull ubuntu 下载官方的ubuntu镜像用来创建PHP的容器。</div><div class="line"></div><div class="line">docker run -it --name PHP -v /code:/home/code ubuntu /bin/bash  使用ubuntu创建容器，容器的名称是PHP，添加数据卷使宿主主机的文件路径/code和容器的文件路径/home/code进行绑定。</div><div class="line"></div><div class="line">docker run -it --name Nginx -v /code:/home/code --link PHP:php -p 80:80 ngixn /bin/bash  使用nginx镜像构建容器，容器名称是Nginx，添加数据卷使宿主主机的文件路径/code和容器的文件路径/home/code进行绑定，连接之前创建的PHP，并把PHP容器命名为php。这里要注意，由于需要用到nginx和php容器的互连，所以需要先创建PHP容器，然后在创建Nginx容器，在创建Nginx容器是才能指定连接PHP。否则就会报错。</div><div class="line"></div><div class="line">docker start PHP  先启动PHP容器</div><div class="line"></div><div class="line">docker start Nginx  启动Nginx容器。</div><div class="line"></div><div class="line">由于PHP容器是使用使用ubuntu的镜像创建的，所以需要安装php先。</div><div class="line"></div><div class="line">docker exec -it PHP /bin/bash  启动一个PHP容器的伪终端的命令行。</div><div class="line"></div><div class="line">apt-get update  更新，官方提供的ubuntu系统是最简洁的版本</div><div class="line"></div><div class="line">apt-get install php  安装php，php的安装过程与在平常的安装过程是一样的。</div><div class="line"></div><div class="line">php安装完成后需要使用php-fpm的服务，这里需要修改php-fpm的配置。这里需要修改的是php-fpm的www.conf。</div><div class="line"></div><div class="line">find / -name www.conf  查找www.conf文件所在的位置。这里需要注意，docker官方提供的ubuntu镜像里满是没有安装vi或者vim的。要修改配置文件可以安装vim或者使用mv或者cp的命令将www.conf放到数据卷内，然后在宿主主机中进行修改，修改完成后再mv或者cp覆盖容器中的文件。</div><div class="line"></div><div class="line">修改www.conf，在文件中找到 listen = /run/php/php7.0-fpm.sock 这一行并注释掉，并添加一行保存并退出如下：</div><div class="line"></div><div class="line">;listen = /run/php/php7.0-fpm.sock</div><div class="line"></div><div class="line">listen = 0.0.0.0:9000</div><div class="line"></div><div class="line">whereis php-fpm  查找php-fpm服务可执行文件所在的路径</div><div class="line"></div><div class="line">/usr/sbin/php-fpm7.0  启动php-fpm,这里的路径是根据 whereis php-fpm 命令查找到的结果来启动的。</div><div class="line"></div><div class="line">如果之前已经启动了fpm，使用ps aux | grep php-fpm 查看php-fpm的进程号然后kill掉再启动。</div><div class="line"></div><div class="line">这里php的配置就基本完成了。接下来是Nginx的配置。</div><div class="line"></div><div class="line">docker exec -it Nginx /bin/bash  启动Nginx容器的伪终端命令行。</div><div class="line"></div><div class="line">使用find / -name nginx.conf 找到nginx.conf配置文件的路径。这里一样没有vi或者vim进行直接配置，可以按照配置php的方式进行配置。</div><div class="line"></div><div class="line">配置php的配置文件：</div><div class="line"></div><div class="line">server &#123;</div><div class="line"></div><div class="line">        listen 80;</div><div class="line"></div><div class="line">        server_name 172.17.0.3;</div><div class="line"></div><div class="line">        root /home/code;      #这里的路径是数据卷的路径，php项目存放在这个目录里面。</div><div class="line"></div><div class="line">        location / &#123;</div><div class="line"></div><div class="line">                index index.html index.htm index.php;</div><div class="line"></div><div class="line">                if (!-e $request_filename) &#123;</div><div class="line"></div><div class="line">                rewrite . /index.php last;</div><div class="line"></div><div class="line">                &#125;</div><div class="line"></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        location ~ \.php$ &#123;</div><div class="line"></div><div class="line">                include fastcgi_params;</div><div class="line"></div><div class="line">                fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;</div><div class="line"></div><div class="line">                fastcgi_pass php:9000;</div><div class="line"></div><div class="line">                fastcgi_index index.php;</div><div class="line"></div><div class="line">        &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后启动nginx。使用service nginx start或者service nginx restart。</p>
+<p>基本按照上述的步骤做下来就可以实现nginx和php的互联了</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;docker提供了在服务端分布式的部署应用，这样的好处是方便维护和升级。&lt;/p&gt;
+&lt;p&gt;接下来我来介绍一些我在自己的服务器是如何使用docker部署nginx和php的。&lt;/p&gt;
+&lt;p&gt;首先需要在服务器端安装docker，这个不是本篇文章的重点所以就不详加叙述了，具体doc
+    
+    </summary>
+    
+    
+      <category term="php" scheme="http://thornvbear.com/tags/php/"/>
+    
+  </entry>
   
   <entry>
     <title>我的这一年！</title>
