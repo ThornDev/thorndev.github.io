@@ -1,0 +1,962 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iOS,源码分析," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="王绵杰的个人博客" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="###HUDMode
+首先来看MBProgressHUD的几种显示模式：
+1234567891011121314151617181920	typedef NS_ENUM(NSInteger, MBProgressHUDMode) &amp;#123;	    /// 默认模式，无进度，只能转    MBProgressHUDModeIndeterminate,        /// 扇形图显示进度">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS 源码分析系列---MBProgressHUD！">
+<meta property="og:url" content="http://thornvbear.com/2017/03/20/iOS 源码分析系列-MBProgressHUD/index.html">
+<meta property="og:site_name" content="王绵杰的个人博客">
+<meta property="og:description" content="###HUDMode
+首先来看MBProgressHUD的几种显示模式：
+1234567891011121314151617181920	typedef NS_ENUM(NSInteger, MBProgressHUDMode) &amp;#123;	    /// 默认模式，无进度，只能转    MBProgressHUDModeIndeterminate,        /// 扇形图显示进度">
+<meta property="og:updated_time" content="2017-03-20T08:06:47.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS 源码分析系列---MBProgressHUD！">
+<meta name="twitter:description" content="###HUDMode
+首先来看MBProgressHUD的几种显示模式：
+1234567891011121314151617181920	typedef NS_ENUM(NSInteger, MBProgressHUDMode) &amp;#123;	    /// 默认模式，无进度，只能转    MBProgressHUDModeIndeterminate,        /// 扇形图显示进度">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://thornvbear.com/2017/03/20/iOS 源码分析系列-MBProgressHUD/"/>
+
+
+
+
+
+  <title> iOS 源码分析系列---MBProgressHUD！ | 王绵杰的个人博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">王绵杰的个人博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">STAY HUNGRY ！ STAY FOOLISH ！</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://thornvbear.com/2017/03/20/iOS 源码分析系列-MBProgressHUD/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Thon Wang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://dn-thornstep.qbox.me/thronvbear_blog_avatarImage.JPG">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="王绵杰的个人博客">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="王绵杰的个人博客" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                iOS 源码分析系列---MBProgressHUD！
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-20T13:58:41+08:00">
+              2017-03-20
+            </time>
+
+            &nbsp;|&nbsp;
+
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-check-o"></i>
+            </span>
+            <time title="Post modified" itemprop="dateModified" datetime="2017-03-20T16:06:47+08:00">
+              2017-03-20
+            </time>
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/20/iOS 源码分析系列-MBProgressHUD/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/20/iOS 源码分析系列-MBProgressHUD/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/03/20/iOS 源码分析系列-MBProgressHUD/" class="leancloud_visitors" data-flag-title="iOS 源码分析系列---MBProgressHUD！">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>###HUDMode</p>
+<p>首先来看MBProgressHUD的几种显示模式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">	typedef NS_ENUM(NSInteger, MBProgressHUDMode) &#123;</div><div class="line">	</div><div class="line">    /// 默认模式，无进度，只能转</div><div class="line">    MBProgressHUDModeIndeterminate,</div><div class="line">    </div><div class="line">    /// 扇形图显示进度</div><div class="line">    MBProgressHUDModeDeterminate,</div><div class="line">    </div><div class="line">    /// 进度条显示状态</div><div class="line">    MBProgressHUDModeDeterminateHorizontalBar,</div><div class="line">    </div><div class="line">    /// 圆环显示</div><div class="line">    MBProgressHUDModeAnnularDeterminate,</div><div class="line">    </div><div class="line">    /// 自定义视图显示</div><div class="line">    MBProgressHUDModeCustomView,</div><div class="line">    </div><div class="line">    /// 仅文本显示</div><div class="line">    MBProgressHUDModeText</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>###核心API</p>
+<h4 id="1-1-属性"><a href="#1-1-属性" class="headerlink" title="1.1 属性"></a>1.1 属性</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">/// show系列函数触发到显示HUD的时间段</div><div class="line">@property (assign, nonatomic) NSTimeInterval graceTime;</div><div class="line">/// HUD最短显示时间</div><div class="line">@property (assign, nonatomic) NSTimeInterval minShowTime;</div><div class="line">/// HUD的显示模式</div><div class="line">@property (assign, nonatomic) MBProgressHUDMode mode;</div><div class="line">/// HUD的显示动画类型</div><div class="line">@property (assign, nonatomic) MBProgressHUDAnimation animationType UI_APPEARANCE_SELECTOR;</div></pre></td></tr></table></figure>
+<h4 id="1-2-显示逻辑"><a href="#1-2-显示逻辑" class="headerlink" title="1.2  显示逻辑"></a>1.2  显示逻辑</h4><p>MBProgressHUD作者把方法的定义放在最上面，而很多人是把属性放在方法上面，这只是习惯问题，无伤大雅：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">/// 在某View上显示HUD，该方法在显示之前会移除之前的HUD以达到好的性能和体验</div><div class="line">+ (instancetype)showHUDAddedTo:(UIView *)view animated:(BOOL)animated &#123;</div><div class="line">    MBProgressHUD *hud = [[self alloc] initWithView:view]; // 调用 [self initWithFrame:view.bounds]：根据传进来的view的frame来设定自己的frame</div><div class="line">    hud.removeFromSuperViewOnHide = YES; // 设置hud在hide状态时，移除</div><div class="line">    [view addSubview:hud];  // 在view上添加实例</div><div class="line">    [hud showAnimated:animated];</div><div class="line">    return hud;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>调用showAnimated，这里首先进行线程安全判断，因为对于 UIView 的处理必须在主线程中, 所以在这里要先用 [NSThread isMainThread] 来确认当前前程为主线程，而    MBMainThreadAssert()就是一个主线程安全判断的宏定义：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line">- (void)showAnimated:(BOOL)animated &#123;</div><div class="line">    MBMainThreadAssert(); </div><div class="line">    [self.minShowTimer invalidate];  // 取消当前的minShowTimer</div><div class="line">    self.useAnimation = animated;</div><div class="line">    self.finished = NO;  // 设置完成标记</div><div class="line">    // If the grace time is set, postpone the HUD display</div><div class="line">    // 如果设定了graceTime，就要推迟HUD的显示，这里graceTime的意义是用来推迟HUD的显示。如果设定了graceTime，那么HUD会在 show 方法触发后的graceTime时间后显示。它的意义是：如果任务完成所消耗的时间非常短并且短于graceTime，则HUD就不会出现了，避免HUD一闪而过的差体验。</div><div class="line">    if (self.graceTime &gt; 0.0) &#123;</div><div class="line">        NSTimer *timer = [NSTimer timerWithTimeInterval:self.graceTime target:self selector:@selector(handleGraceTimer:) userInfo:nil repeats:NO];</div><div class="line">        [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];</div><div class="line">        self.graceTimer = timer;</div><div class="line">    &#125; </div><div class="line">    // ... otherwise show the HUD immediately</div><div class="line">    else &#123;</div><div class="line">        [self showUsingAnimation:self.useAnimation];</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// self.graceTime的触发方法，当未结束时，动画显示hud</div><div class="line">- (void)handleGraceTimer:(NSTimer *)theTimer &#123;</div><div class="line">    // Show the HUD only if the task is still running</div><div class="line">    if (!self.hasFinished) &#123;</div><div class="line">        [self showUsingAnimation:self.useAnimation];</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 这是一个显示的核心方法，所有的显示hud的方法最终都会调用这个方法</div><div class="line">- (void)showUsingAnimation:(BOOL)animated &#123;</div><div class="line">    // Cancel any previous animations</div><div class="line">    // 移除已有hud的动画</div><div class="line">    [self.bezelView.layer removeAllAnimations]; </div><div class="line">    [self.backgroundView.layer removeAllAnimations];</div><div class="line"></div><div class="line">    // Cancel any scheduled hideDelayed: calls</div><div class="line">    // 取消延迟hide 的timer</div><div class="line">    [self.hideDelayTimer invalidate];</div><div class="line">	// 记录开始的时间</div><div class="line">    self.showStarted = [NSDate date];</div><div class="line">    // 将试图的可视度设为1，之前在视图设置里已默认设置为0</div><div class="line">    self.alpha = 1.f;</div><div class="line"></div><div class="line">    // Needed in case we hide and re-show with the same NSProgress object attached.</div><div class="line">    [self setNSProgressDisplayLinkEnabled:YES]; // 设置progress显示监听</div><div class="line"></div><div class="line">    if (animated) &#123;</div><div class="line">        [self animateIn:YES withType:self.animationType completion:NULL];</div><div class="line">    &#125; else &#123;</div><div class="line">    // 方法弃用警告</div><div class="line">#pragma clang diagnostic push</div><div class="line">#pragma clang diagnostic ignored &quot;-Wdeprecated-declarations&quot;</div><div class="line">        self.bezelView.alpha = self.opacity;</div><div class="line">#pragma clang diagnostic pop</div><div class="line">        self.backgroundView.alpha = 1.f;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>这里需要说的一点，<figure class="highlight plain"><figcaption><span>来刷新progress的变化。那么会有人问了为什么没有使用NSTimer和KVO呢？因为CADisplayLink在正常情况下会在每次刷新结束都被调用，精确度相当高，并且不需要关心屏幕的刷新频率，适合做UI的不停重绘，比如自定义动画引擎或者视频播放的渲染；而NSTimer的精确度就显得低了点，比如NSTimer的触发时间到的时候，runloop如果在阻塞状态，触发时间就会推迟到下一个runloop周期；如果使用kvo机制来监听的话，因为动画刷新频率比较快，可能会非常消耗主线程，拖重性能：</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure></li>
+</ul>
+<ul>
+<li><p>(void)setNSProgressDisplayLinkEnabled:(BOOL)enabled {<br>  // We’re using CADisplayLink, because NSProgress can change very quickly and observing it may starve the main thread,<br>  // so we’re refreshing the progress only every frame draw<br>  if (enabled &amp;&amp; self.progressObject) {</p>
+<pre><code>// Only create if not already active.
+if (!self.progressObjectDisplayLink) {
+    self.progressObjectDisplayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(updateProgressFromProgressObject)];
+}
+</code></pre><p>  } else {</p>
+<pre><code>self.progressObjectDisplayLink = nil;
+</code></pre><p>  }<br>}</p>
+</li>
+<li><p>(void)updateProgressFromProgressObject {<br>  self.progress = self.progressObject.fractionCompleted;<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#### 1.3 隐藏逻辑</div><div class="line"></div><div class="line">* ```+ hideHUDForView:animated: ```方法的实现和 ```+ showHUDAddedTo:animated: ```差不多，而```+ HUDForView: ```方法会返回对应 view 最上层的 MBProgressHUD 的实例。</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>(BOOL)hideHUDForView:(UIView <em>)view animated:(BOOL)animated {<br>  MBProgressHUD </em>hud = [self HUDForView:view];<br>  if (hud != nil) {</p>
+<pre><code>hud.removeFromSuperViewOnHide = YES;
+[hud hideAnimated:animated];
+return YES;
+</code></pre><p>  }<br>  return NO;<br>}</p>
+</li>
+<li><p>(MBProgressHUD <em>)HUDForView:(UIView </em>)view {<br>  NSEnumerator <em>subviewsEnum = [view.subviews reverseObjectEnumerator];<br>  for (UIView </em>subview in subviewsEnum) {</p>
+<pre><code>if ([subview isKindOfClass:self]) {
+    return (MBProgressHUD *)subview;
+}
+</code></pre><p>  }<br>  return nil;<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">* 然后调用的``` - hideAnimated:``` 方法和 ```- hideUsingAnimation: ```方法，来实现hud的隐藏，同样```- hideUsingAnimation:```方法也是每个隐藏方法的必调核心方法，而只有在 HUD 隐藏之后 ```- done``` 负责隐藏执行``` completionBlock ```和 ```delegate ```的回调：</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>(void)hideAnimated:(BOOL)animated {<br>  MBMainThreadAssert();<br>  [self.graceTimer invalidate];<br>  self.useAnimation = animated;<br>  self.finished = YES;<br>  // If the minShow time is set, calculate how long the HUD was shown,<br>  // and postpone the hiding operation if necessary<br>  if (self.minShowTime &gt; 0.0 &amp;&amp; self.showStarted) {</p>
+<pre><code>NSTimeInterval interv = [[NSDate date] timeIntervalSinceDate:self.showStarted];
+if (interv &lt; self.minShowTime) {
+    NSTimer *timer = [NSTimer timerWithTimeInterval:(self.minShowTime - interv) target:self selector:@selector(handleMinShowTimer:) userInfo:nil repeats:NO];
+    [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+    self.minShowTimer = timer;
+    return;
+} 
+</code></pre><p>  }<br>  // … otherwise hide the HUD immediately<br>  [self hideUsingAnimation:self.useAnimation];<br>}</p>
+</li>
+<li><p>(void)hideUsingAnimation:(BOOL)animated {<br>  if (animated &amp;&amp; self.showStarted) {</p>
+<pre><code>self.showStarted = nil;
+[self animateIn:NO withType:self.animationType completion:^(BOOL finished) {
+    [self done];
+}];
+</code></pre><p>  } else {</p>
+<pre><code>self.showStarted = nil;
+self.bezelView.alpha = 0.f;
+self.backgroundView.alpha = 1.f;
+[self done];
+</code></pre><p>  }<br>}</p>
+</li>
+<li><p>(void)done {<br>  // Cancel any scheduled hideDelayed: calls<br>  [self.hideDelayTimer invalidate];<br>  [self setNSProgressDisplayLinkEnabled:NO];</p>
+<p>  if (self.hasFinished) {</p>
+<pre><code>self.alpha = 0.0f;
+if (self.removeFromSuperViewOnHide) {
+    [self removeFromSuperview];
+}
+</code></pre><p>  }<br>  MBProgressHUDCompletionBlock completionBlock = self.completionBlock;<br>  if (completionBlock) {</p>
+<pre><code>completionBlock();
+</code></pre><p>  }<br>  id<mbprogresshuddelegate> delegate = self.delegate;<br>  if ([delegate respondsToSelector:@selector(hudWasHidden:)]) {</mbprogresshuddelegate></p>
+<pre><code>[delegate performSelector:@selector(hudWasHidden:) withObject:self];
+</code></pre><p>  }<br>}</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">* 通过观察hud的显示和隐藏逻辑不难看出，无论是 show 方法，还是 hide 方法，在设定animated属性为YES的前提下，最终都会走到 animateIn: withType: completion: 方法：</div></pre></td></tr></table></figure>
+<ul>
+<li><p>(void)animateIn:(BOOL)animatingIn withType:(MBProgressHUDAnimation)type completion:(void(^)(BOOL finished))completion {<br>  // Automatically determine the correct zoom animation type<br>  if (type == MBProgressHUDAnimationZoom) {</p>
+<pre><code>type = animatingIn ? MBProgressHUDAnimationZoomIn : MBProgressHUDAnimationZoomOut;
+</code></pre><p>  }<br>  // 设置x，y的缩放倍数<br>  CGAffineTransform small = CGAffineTransformMakeScale(0.5f, 0.5f);<br>  CGAffineTransform large = CGAffineTransformMakeScale(1.5f, 1.5f);</p>
+<p>  // Set starting state<br>  // 初始化hud状态<br>  UIView *bezelView = self.bezelView;<br>  if (animatingIn &amp;&amp; bezelView.alpha == 0.f &amp;&amp; type == MBProgressHUDAnimationZoomIn) {</p>
+<pre><code>bezelView.transform = small;
+</code></pre><p>  } else if (animatingIn &amp;&amp; bezelView.alpha == 0.f &amp;&amp; type == MBProgressHUDAnimationZoomOut) {</p>
+<pre><code>bezelView.transform = large;
+</code></pre><p>  }</p>
+<p>  // Perform animations<br>  // 创建动画<br>  dispatch_block_t animations = ^{</p>
+<pre><code>if (animatingIn) {
+    bezelView.transform = CGAffineTransformIdentity;
+} else if (!animatingIn &amp;&amp; type == MBProgressHUDAnimationZoomIn) {
+    bezelView.transform = large;
+} else if (!animatingIn &amp;&amp; type == MBProgressHUDAnimationZoomOut) {
+    bezelView.transform = small;
+}
+</code></pre><p>#pragma clang diagnostic push<br>#pragma clang diagnostic ignored “-Wdeprecated-declarations”</p>
+<pre><code>bezelView.alpha = animatingIn ? self.opacity : 0.f;
+</code></pre><p>#pragma clang diagnostic pop</p>
+<pre><code>// 这里实现show和hide方法的区分，animationIn yes时为show方法，no时为hide方法，从而实现显示与隐藏
+self.backgroundView.alpha = animatingIn ? 1.f : 0.f;
+</code></pre><p>  };</p>
+<p>  // Spring animations are nicer, but only available on iOS 7+<br>  // 兼容性在7.0以上<br>#if __IPHONE_OS_VERSION_MAX_ALLOWED &gt;= 70000 || TARGET_OS_TV<br>  if (kCFCoreFoundationVersionNumber &gt;= kCFCoreFoundationVersionNumber_iOS_7_0) {</p>
+<pre><code>[UIView animateWithDuration:0.3 delay:0. usingSpringWithDamping:1.f initialSpringVelocity:0.f options:UIViewAnimationOptionBeginFromCurrentState animations:animations completion:completion];
+return;
+</code></pre><p>  }<br>#endif<br>  [UIView animateWithDuration:0.3 delay:0. options:UIViewAnimationOptionBeginFromCurrentState animations:animations completion:completion];<br>}</p>
+</li>
+</ul>
+<p>```</p>
+<p>####此框架可取之处：</p>
+<ul>
+<li>1、代码的质量非常高，方法的抽象程度高，但是不繁琐，暴露对外的API最终走向同一个私有方法，这种设计思想，使得框架维护起来十分方便快捷。</li>
+<li>2、设计显示上加上的graceTimer、minShowTimer、hideDelayTimer的概念，使得hud的显示与隐藏有了缓冲的时间，可以提高稳定性和定制性。</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag"># iOS</a>
+          
+            <a href="/tags/源码分析/" rel="tag"># 源码分析</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/09/服务器使用docker部署nginx和php/" rel="next" title="服务器使用docker部署nginx和php">
+                <i class="fa fa-chevron-left"></i> 服务器使用docker部署nginx和php
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/20/iOS 源码分析系列-MBProgressHUD/"
+           data-title="iOS 源码分析系列---MBProgressHUD！" data-url="http://thornvbear.com/2017/03/20/iOS 源码分析系列-MBProgressHUD/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://dn-thornstep.qbox.me/thronvbear_blog_avatarImage.JPG"
+               alt="Thon Wang" />
+          <p class="site-author-name" itemprop="name">Thon Wang</p>
+          <p class="site-description motion-element" itemprop="description">本博客主要记录自己的学习和生活，有关技术方便若有浅尝辄止、分析不足的地方，还请指出！</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/ThornDev" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/u014783027" target="_blank" title="Pre Blog">
+                  
+                    <i class="fa fa-fw fa-inbox"></i>
+                  
+                  Pre Blog
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.bootcss.com/p/font-awesome/#" target="_blank" title="FontA">
+                  
+                    <i class="fa fa-fw fa-fire"></i>
+                  
+                  FontA
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.devtang.com" title="唐巧的技术博客" target="_blank">唐巧的技术博客</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-属性"><span class="nav-number">1.</span> <span class="nav-text">1.1 属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-显示逻辑"><span class="nav-number">2.</span> <span class="nav-text">1.2  显示逻辑</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Thon Wang</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"thornvbear"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("3HWxI4CHdU8auWVasBDvYYHf-gzGzoHsz", "xNzv7WKP3ignuxpzn11LEBpT");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>
