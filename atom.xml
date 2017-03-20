@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://thornvbear.com/"/>
-  <updated>2017-03-20T08:10:44.000Z</updated>
+  <updated>2017-03-20T08:12:41.000Z</updated>
   <id>http://thornvbear.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://thornvbear.com/2017/03/20/iOS%20%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E7%B3%BB%E5%88%97-MBProgressHUD/"/>
     <id>http://thornvbear.com/2017/03/20/iOS 源码分析系列-MBProgressHUD/</id>
     <published>2017-03-20T05:58:41.000Z</published>
-    <updated>2017-03-20T08:10:44.000Z</updated>
+    <updated>2017-03-20T08:12:41.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="HUDMode"><a href="#HUDMode" class="headerlink" title="HUDMode"></a>HUDMode</h3><p>首先来看MBProgressHUD的几种显示模式：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">	typedef NS_ENUM(NSInteger, MBProgressHUDMode) &#123;</div><div class="line">	</div><div class="line">    /// 默认模式，无进度，只能转</div><div class="line">    MBProgressHUDModeIndeterminate,</div><div class="line">    </div><div class="line">    /// 扇形图显示进度</div><div class="line">    MBProgressHUDModeDeterminate,</div><div class="line">    </div><div class="line">    /// 进度条显示状态</div><div class="line">    MBProgressHUDModeDeterminateHorizontalBar,</div><div class="line">    </div><div class="line">    /// 圆环显示</div><div class="line">    MBProgressHUDModeAnnularDeterminate,</div><div class="line">    </div><div class="line">    /// 自定义视图显示</div><div class="line">    MBProgressHUDModeCustomView,</div><div class="line">    </div><div class="line">    /// 仅文本显示</div><div class="line">    MBProgressHUDModeText</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
@@ -41,7 +41,7 @@ if (!self.progressObjectDisplayLink) {
 </code></pre><p>  }<br>}</p>
 </li>
 <li><p>(void)updateProgressFromProgressObject {<br>  self.progress = self.progressObject.fractionCompleted;<br>}</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#### 1.3 隐藏逻辑</div><div class="line"></div><div class="line">```+ hideHUDForView:animated: ```方法的实现和 ```+ showHUDAddedTo:animated: ```差不多，而```+ HUDForView: ```方法会返回对应 view 最上层的 MBProgressHUD 的实例。</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#### 1.3 隐藏逻辑</div><div class="line"></div><div class="line">```+ hideHUDForView:animated: ```方法的实现和 ```+ showHUDAddedTo:animated: ```差不多，而```+ HUDForView: ```方法会返回对应 view 最上层的 MBProgressHUD 的实例。</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <ul>
@@ -93,10 +93,8 @@ if (self.removeFromSuperViewOnHide) {
 </code></pre><p>  }<br>  id<mbprogresshuddelegate> delegate = self.delegate;<br>  if ([delegate respondsToSelector:@selector(hudWasHidden:)]) {</mbprogresshuddelegate></p>
 <pre><code>[delegate performSelector:@selector(hudWasHidden:) withObject:self];
 </code></pre><p>  }<br>}</p>
-</li>
-</ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">通过观察hud的显示和隐藏逻辑不难看出，无论是 show 方法，还是 hide 方法，在设定animated属性为YES的前提下，最终都会走到 animateIn: withType: completion: 方法：</div></pre></td></tr></table></figure>
-<ul>
+</li>
 <li><p>(void)animateIn:(BOOL)animatingIn withType:(MBProgressHUDAnimation)type completion:(void(^)(BOOL finished))completion {<br>  // Automatically determine the correct zoom animation type<br>  if (type == MBProgressHUDAnimationZoom) {</p>
 <pre><code>type = animatingIn ? MBProgressHUDAnimationZoomIn : MBProgressHUDAnimationZoomOut;
 </code></pre><p>  }<br>  // 设置x，y的缩放倍数<br>  CGAffineTransform small = CGAffineTransformMakeScale(0.5f, 0.5f);<br>  CGAffineTransform large = CGAffineTransformMakeScale(1.5f, 1.5f);</p>
@@ -122,11 +120,10 @@ self.backgroundView.alpha = animatingIn ? 1.f : 0.f;
 <p>  // Spring animations are nicer, but only available on iOS 7+<br>  // 兼容性在7.0以上<br>#if __IPHONE_OS_VERSION_MAX_ALLOWED &gt;= 70000 || TARGET_OS_TV<br>  if (kCFCoreFoundationVersionNumber &gt;= kCFCoreFoundationVersionNumber_iOS_7_0) {</p>
 <pre><code>[UIView animateWithDuration:0.3 delay:0. usingSpringWithDamping:1.f initialSpringVelocity:0.f options:UIViewAnimationOptionBeginFromCurrentState animations:animations completion:completion];
 return;
-</code></pre><p>  }<br>#endif<br>  [UIView animateWithDuration:0.3 delay:0. options:UIViewAnimationOptionBeginFromCurrentState animations:animations completion:completion];<br>}</p>
+</code></pre><p>  }<br>#endif<br>  [UIView animateWithDuration:0.3 delay:0. options:UIViewAnimationOptionBeginFromCurrentState animations:animations completion:completion];<br>}<br>```</p>
 </li>
 </ul>
-<p>```</p>
-<h4 id="此框架可取之处："><a href="#此框架可取之处：" class="headerlink" title="此框架可取之处："></a>此框架可取之处：</h4><p>1、代码的质量非常高，方法的抽象程度高，但是不繁琐，暴露对外的API最终走向同一个私有方法，这种设计思想，使得框架维护起来十分方便快捷。</p>
+<h3 id="此框架可取之处："><a href="#此框架可取之处：" class="headerlink" title="此框架可取之处："></a>此框架可取之处：</h3><p>1、代码的质量非常高，方法的抽象程度高，但是不繁琐，暴露对外的API最终走向同一个私有方法，这种设计思想，使得框架维护起来十分方便快捷。</p>
 <p>2、设计显示上加上的graceTimer、minShowTimer、hideDelayTimer的概念，使得hud的显示与隐藏有了缓冲的时间，可以提高稳定性和定制性。</p>
 ]]></content>
     

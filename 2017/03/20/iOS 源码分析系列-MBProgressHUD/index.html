@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="王绵杰的个人博客">
 <meta property="og:description" content="HUDMode首先来看MBProgressHUD的几种显示模式：
 1234567891011121314151617181920	typedef NS_ENUM(NSInteger, MBProgressHUDMode) &amp;#123;	    /// 默认模式，无进度，只能转    MBProgressHUDModeIndeterminate,        /// 扇形图显示进度    MBPr">
-<meta property="og:updated_time" content="2017-03-20T08:10:44.000Z">
+<meta property="og:updated_time" content="2017-03-20T08:12:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS 源码分析系列---MBProgressHUD！">
 <meta name="twitter:description" content="HUDMode首先来看MBProgressHUD的几种显示模式：
@@ -308,7 +308,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-check-o"></i>
             </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2017-03-20T16:10:44+08:00">
+            <time title="Post modified" itemprop="dateModified" datetime="2017-03-20T16:12:41+08:00">
               2017-03-20
             </time>
             
@@ -375,7 +375,7 @@ if (!self.progressObjectDisplayLink) {
 </code></pre><p>  }<br>}</p>
 </li>
 <li><p>(void)updateProgressFromProgressObject {<br>  self.progress = self.progressObject.fractionCompleted;<br>}</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#### 1.3 隐藏逻辑</div><div class="line"></div><div class="line">```+ hideHUDForView:animated: ```方法的实现和 ```+ showHUDAddedTo:animated: ```差不多，而```+ HUDForView: ```方法会返回对应 view 最上层的 MBProgressHUD 的实例。</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#### 1.3 隐藏逻辑</div><div class="line"></div><div class="line">```+ hideHUDForView:animated: ```方法的实现和 ```+ showHUDAddedTo:animated: ```差不多，而```+ HUDForView: ```方法会返回对应 view 最上层的 MBProgressHUD 的实例。</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <ul>
@@ -427,10 +427,8 @@ if (self.removeFromSuperViewOnHide) {
 </code></pre><p>  }<br>  id<mbprogresshuddelegate> delegate = self.delegate;<br>  if ([delegate respondsToSelector:@selector(hudWasHidden:)]) {</mbprogresshuddelegate></p>
 <pre><code>[delegate performSelector:@selector(hudWasHidden:) withObject:self];
 </code></pre><p>  }<br>}</p>
-</li>
-</ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">通过观察hud的显示和隐藏逻辑不难看出，无论是 show 方法，还是 hide 方法，在设定animated属性为YES的前提下，最终都会走到 animateIn: withType: completion: 方法：</div></pre></td></tr></table></figure>
-<ul>
+</li>
 <li><p>(void)animateIn:(BOOL)animatingIn withType:(MBProgressHUDAnimation)type completion:(void(^)(BOOL finished))completion {<br>  // Automatically determine the correct zoom animation type<br>  if (type == MBProgressHUDAnimationZoom) {</p>
 <pre><code>type = animatingIn ? MBProgressHUDAnimationZoomIn : MBProgressHUDAnimationZoomOut;
 </code></pre><p>  }<br>  // 设置x，y的缩放倍数<br>  CGAffineTransform small = CGAffineTransformMakeScale(0.5f, 0.5f);<br>  CGAffineTransform large = CGAffineTransformMakeScale(1.5f, 1.5f);</p>
@@ -456,11 +454,10 @@ self.backgroundView.alpha = animatingIn ? 1.f : 0.f;
 <p>  // Spring animations are nicer, but only available on iOS 7+<br>  // 兼容性在7.0以上<br>#if __IPHONE_OS_VERSION_MAX_ALLOWED &gt;= 70000 || TARGET_OS_TV<br>  if (kCFCoreFoundationVersionNumber &gt;= kCFCoreFoundationVersionNumber_iOS_7_0) {</p>
 <pre><code>[UIView animateWithDuration:0.3 delay:0. usingSpringWithDamping:1.f initialSpringVelocity:0.f options:UIViewAnimationOptionBeginFromCurrentState animations:animations completion:completion];
 return;
-</code></pre><p>  }<br>#endif<br>  [UIView animateWithDuration:0.3 delay:0. options:UIViewAnimationOptionBeginFromCurrentState animations:animations completion:completion];<br>}</p>
+</code></pre><p>  }<br>#endif<br>  [UIView animateWithDuration:0.3 delay:0. options:UIViewAnimationOptionBeginFromCurrentState animations:animations completion:completion];<br>}<br>```</p>
 </li>
 </ul>
-<p>```</p>
-<h4 id="此框架可取之处："><a href="#此框架可取之处：" class="headerlink" title="此框架可取之处："></a>此框架可取之处：</h4><p>1、代码的质量非常高，方法的抽象程度高，但是不繁琐，暴露对外的API最终走向同一个私有方法，这种设计思想，使得框架维护起来十分方便快捷。</p>
+<h3 id="此框架可取之处："><a href="#此框架可取之处：" class="headerlink" title="此框架可取之处："></a>此框架可取之处：</h3><p>1、代码的质量非常高，方法的抽象程度高，但是不繁琐，暴露对外的API最终走向同一个私有方法，这种设计思想，使得框架维护起来十分方便快捷。</p>
 <p>2、设计显示上加上的graceTimer、minShowTimer、hideDelayTimer的概念，使得hud的显示与隐藏有了缓冲的时间，可以提高稳定性和定制性。</p>
 
       
@@ -671,7 +668,7 @@ return;
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#HUDMode"><span class="nav-number">1.</span> <span class="nav-text">HUDMode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#核心API"><span class="nav-number">2.</span> <span class="nav-text">核心API</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-属性"><span class="nav-number">2.1.</span> <span class="nav-text">1.1 属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-显示逻辑"><span class="nav-number">2.2.</span> <span class="nav-text">1.2  显示逻辑</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#此框架可取之处："><span class="nav-number">2.3.</span> <span class="nav-text">此框架可取之处：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#HUDMode"><span class="nav-number">1.</span> <span class="nav-text">HUDMode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#核心API"><span class="nav-number">2.</span> <span class="nav-text">核心API</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-属性"><span class="nav-number">2.1.</span> <span class="nav-text">1.1 属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-显示逻辑"><span class="nav-number">2.2.</span> <span class="nav-text">1.2  显示逻辑</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#此框架可取之处："><span class="nav-number">3.</span> <span class="nav-text">此框架可取之处：</span></a></li></ol></div>
             
 
           </div>
