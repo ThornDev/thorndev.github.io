@@ -89,9 +89,9 @@
     <link href="http://thornvbear.tech/2016/12/31/%E6%88%91%E7%9A%84%E8%BF%99%E4%B8%80%E5%B9%B4/"/>
     <id>http://thornvbear.tech/2016/12/31/我的这一年/</id>
     <published>2016-12-31T13:44:03.000Z</published>
-    <updated>2017-02-23T06:33:31.000Z</updated>
+    <updated>2018-11-21T09:50:16.436Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="https://dn-thornstep.qbox.me/2017-02-23-blog-image.jpg" alt="MacDown logo"></p>
+    <content type="html"><![CDATA[<p><img src="http://test.ineutech.com/2017-02-23-blog-image.jpg" alt="MacDown logo"></p>
 <h1 id="我的这一年"><a href="#我的这一年" class="headerlink" title="我的这一年"></a>我的这一年</h1><p>  这一年由于种种原因离开了我在魔都服务的第一家公司，思来氏一直做着教育方面的改革领路人，非常感谢这个温暖的家庭让我在魔都有了立足的勇气。一直认为技术人是公司里面最不搅事的人，技术人是甘心耕地，为自己心中的理想改变世界的工种。而我也为是其中的一员感到骄傲。</p>
 <p>在一线城市的第二个公司，充满着期望和忐忑；期望自己在新的公司能有一番作为，忐忑是没有做出聪明的选择，之前的同事给我说过，工作要看人，做事先做人，看人准了就行，所以我相信我的选择。因为一直觉得自己是一个非常积极向上的人，遇事总是向好的一面看，我觉得这是我每天都很斗志昂扬，积极的原因，所以一向很少看鸡汤的我，总是心里面给自己喝着一碗又一碗功力十足的鸡汤。</p>
 <p>做事情总是要有准则的，跟做人一样，每个人都有自己处事处人的准则，所以愿新的一年自己能有收获，向自己的梦想前进！</p>
@@ -99,8 +99,8 @@
     
     <summary type="html">
     
-      &lt;p&gt;&lt;img src=&quot;https://dn-thornstep.qbox.me/2017-02-23-blog-image.jpg&quot; alt=&quot;MacDown logo&quot;&gt;&lt;/p&gt;
-&lt;h1 id=&quot;我的这一年&quot;&gt;&lt;a href=&quot;#我的这一年&quot; class=&quot;headerli
+      &lt;p&gt;&lt;img src=&quot;http://test.ineutech.com/2017-02-23-blog-image.jpg&quot; alt=&quot;MacDown logo&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;我的这一年&quot;&gt;&lt;a href=&quot;#我的这一年&quot; class=&quot;headerlink&quot; 
     
     </summary>
     
@@ -114,7 +114,7 @@
     <link href="http://thornvbear.tech/2016/12/14/Docker%E7%B3%BB%E5%88%97%E4%B9%8B%E4%BB%80%E4%B9%88%E6%98%AFDocker%E9%95%9C%E5%83%8F%E3%80%81%E5%AE%B9%E5%99%A8%E5%92%8C%E4%BB%93%E5%BA%93/"/>
     <id>http://thornvbear.tech/2016/12/14/Docker系列之什么是Docker镜像、容器和仓库/</id>
     <published>2016-12-14T05:24:38.000Z</published>
-    <updated>2016-12-14T14:53:52.000Z</updated>
+    <updated>2018-11-21T09:50:46.891Z</updated>
     
     <content type="html"><![CDATA[<h3 id="Docker生命周期"><a href="#Docker生命周期" class="headerlink" title="Docker生命周期"></a>Docker生命周期</h3><p>Docker 包括三个基本概念:</p>
 <ul>
@@ -123,7 +123,7 @@
 <li>仓库（Repository）</li>
 </ul>
 <p>这三部分组成了Docker的整个生命周期，如下图所示，容器是由镜像实例化而来的，这和我们学习的面向对象的概念十分相似，我们可以把镜像想象成类,把容器想象成类经过实例化后的对象，这样就非常好理解镜像和容器的关系了。</p>
-<p><img src="https://dn-thornstep.qbox.me/2016-12-14-blog-Docker.png" alt="Macdown logo"></p>
+<p><img src="http://test.ineutech.com/2016-12-14-blog-Docker.png" alt="Macdown logo"></p>
 <h3 id="Docker镜像"><a href="#Docker镜像" class="headerlink" title="Docker镜像"></a>Docker镜像</h3><p>Docker的镜像概念类似于虚拟机里的镜像，是一个只读的模板，一个独立的文件系统，包括运行容器所需的数据，可以用来创建新的容器。<br>例如：一个镜像可以包含一个完整的 ubuntu 操作系统环境，里面仅安装了Mysql或用户需要的其它应用程序。</p>
 <p>Docker的镜像实际上由一层一层的文件系统组成，这种层级的文件系统被称为UnionFS。镜像可以基于Dockerfile构建，Dockerfile是一个描述文件，里面包含若干条命令，每条命令都会对基础文件系统创建新的层次结构。</p>
 <p>Docker 提供了一个很简单的机制来创建镜像或者更新现有的镜像，用户甚至可以直接从其他人那里下载一个已经做好的镜像来直接使用。</p>
@@ -390,13 +390,13 @@
     <link href="http://thornvbear.tech/2016/09/14/xcode8%E5%A7%97%E5%A7%97%E6%9D%A5%E8%BF%9F/"/>
     <id>http://thornvbear.tech/2016/09/14/xcode8姗姗来迟/</id>
     <published>2016-09-14T09:46:36.000Z</published>
-    <updated>2016-09-17T14:50:49.000Z</updated>
+    <updated>2018-11-21T09:51:57.405Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Xcode-8-0-版本"><a href="#Xcode-8-0-版本" class="headerlink" title="Xcode 8.0 版本"></a>Xcode 8.0 版本</h2><ul>
 <li>Xcode 8.0GM版本已发布了一段时间，用于新一代的Xcode升级版本，这里普及一个知识：什么是GM版本，GM版是软件开发版本中的最终正式版的母版，不意外发现重大bug的话，GM版＝正式x.0版。Xcode 8.0正式版也于前两天正式发布，显然它是为iOS 10而生的。</li>
 <li>Xcode 8.0更新提示：</li>
 </ul>
-<p><img src="https://dn-thornstep.qbox.me/2016-09-17xcode8.0_update_note.png" alt="Smaller image"></p>
+<p><img src="http://test.ineutech.com/2016-09-17xcode8.0_update_note.png" alt="Smaller image"></p>
 <ul>
 <li><p>首先，Xcode 8引入了Swift3.0，加入了更多新的特性，加入了支持iOS 10、watchOS 3、tvOS 10、macOS Sierra的SDK。<br>至于详细的Release Note可以查看<a href="https://developer.apple.com/library/content/releasenotes/DeveloperTools/RN-Xcode/Introduction.html" target="_blank" rel="external">https://developer.apple.com/library/content/releasenotes/DeveloperTools/RN-Xcode/Introduction.html</a></p>
 </li>
@@ -404,9 +404,9 @@
 <h2 id="证书管理"><a href="#证书管理" class="headerlink" title="证书管理"></a>证书管理</h2><p>  Xcode支持自动管理证书的功能，当然也可以自己设置。<br>  <img src="https://dn-thornstep.qbox.me/2016-09-17_sign_manage_intro.png" alt="Mou image"><br>  不过建议大家勾选这个Automatically manage signing.可以很方便的为我们管理自己的证书。</p>
 <h2 id="xib或者storyboard"><a href="#xib或者storyboard" class="headerlink" title="xib或者storyboard"></a>xib或者storyboard</h2></li>
 <li><p>1.xib可以更方便的查看你的布局在不同尺寸设备上的显示情况了。</p>
-<p>  <img src="https://dn-thornstep.qbox.me/2016-09-17_xib_diff_device.png" alt="image"><br>  可以看到Xcode8.0把设备尺寸设置放在了布局的最下方，而右边里的Attributes Inspector里的尺寸选择取消了，并且我们可以按条件选择要查看的设备，点击<code>vary for traits</code>可以选择width或者height查看。这次可以说苹果很有良心，为这个设计点赞。</p>
+<p>  <img src="http://test.ineutech.com/2016-09-17_xib_diff_device.png" alt="image"><br>  可以看到Xcode8.0把设备尺寸设置放在了布局的最下方，而右边里的Attributes Inspector里的尺寸选择取消了，并且我们可以按条件选择要查看的设备，点击<code>vary for traits</code>可以选择width或者height查看。这次可以说苹果很有良心，为这个设计点赞。</p>
 </li>
-<li><p>2.使用Xcode8打开xib文件后，会出现下图的提示。<br>  <img src="https://dn-thornstep.qbox.me/2016-09-17_xib_change_for_device.jpg" alt="image"></p>
+<li><p>2.使用Xcode8打开xib文件后，会出现下图的提示。<br>  <img src="http://test.ineutech.com/2016-09-17_xib_change_for_device.jpg" alt="image"></p>
 <p>  大家选择Choose Device即可。之后大家会发现布局啊，frame乱了，只需要更新一下frame即可。</p>
 <ul>
 <li>注意：如果按上面的步骤操作后，在用Xcode7打开Xib会报一下错误</li>
@@ -429,9 +429,9 @@
 <h2 id="iOS-10隐私权限设置"><a href="#iOS-10隐私权限设置" class="headerlink" title="iOS 10隐私权限设置"></a>iOS 10隐私权限设置</h2><ul>
 <li>iOS 10 开始对隐私权限更加严格，如果你不设置就会直接崩溃，现在很多遇到崩溃问题了，一般解决办法都是在info.plist文件添加对应的Key-Value就可以了。</li>
 </ul>
-<p><img src="https://dn-thornstep.qbox.me/2016-09-17_ios10_private_setting.png" alt="image"><br>如上图显示的是部分权限设置：蓝牙使用权限，日历，相机，通讯录，健康分享，健康更新，后台一直定位，定位许可，使用时定位等权限设置。</p>
-<h2 id="Xcode-8-运行一堆没用的logs解决办法"><a href="#Xcode-8-运行一堆没用的logs解决办法" class="headerlink" title="Xcode 8 运行一堆没用的logs解决办法"></a>Xcode 8 运行一堆没用的logs解决办法</h2><p><img src="https://dn-thornstep.qbox.me/2016-09-17_xcode8_print_logs.png" alt="image"><br>上图我们看到，自己新建的一个工程什么也没做直接运行打印了一堆烂七八糟的东西，我觉得这个应该是Xcode 8的问题，打印的东西也没仔细研究，看着是一些项目的状态值，如果不想每次运行都有这些东西可以在Edite Scheme——&gt;Run——&gt;Arguments里设置OS_ACTIVITY_MODE : disable如下图</p>
-<p><img src="https://dn-thornstep.qbox.me/2016-09-17_lock_extra_logs.png" alt="image"></p>
+<p><img src="http://test.ineutech.com/2016-09-17_ios10_private_setting.png" alt="image"><br>如上图显示的是部分权限设置：蓝牙使用权限，日历，相机，通讯录，健康分享，健康更新，后台一直定位，定位许可，使用时定位等权限设置。</p>
+<h2 id="Xcode-8-运行一堆没用的logs解决办法"><a href="#Xcode-8-运行一堆没用的logs解决办法" class="headerlink" title="Xcode 8 运行一堆没用的logs解决办法"></a>Xcode 8 运行一堆没用的logs解决办法</h2><p><img src="http://test.ineutech.com/2016-09-17_xcode8_print_logs.png" alt="image"><br>上图我们看到，自己新建的一个工程什么也没做直接运行打印了一堆烂七八糟的东西，我觉得这个应该是Xcode 8的问题，打印的东西也没仔细研究，看着是一些项目的状态值，如果不想每次运行都有这些东西可以在Edite Scheme——&gt;Run——&gt;Arguments里设置OS_ACTIVITY_MODE : disable如下图</p>
+<p><img src="http://test.ineutech.com/2016-09-17_lock_extra_logs.png" alt="image"></p>
 <h2 id="iOS-10新特性"><a href="#iOS-10新特性" class="headerlink" title="iOS 10新特性"></a>iOS 10新特性</h2><ul>
 <li>Xcode 8 是为iOS 10服务的，所以要了解iOS 10参看：<a href="https://developer.apple.com/library/content/releasenotes/General/WhatsNewIniOS/Articles/iOS10.html#//apple_ref/doc/uid/TP40017084-SW1" target="_blank" rel="external">iOS 10 苹果官方文档</a></li>
 </ul>
@@ -985,13 +985,40 @@ mysql_close($con);
   </entry>
   
   <entry>
+    <title>I&#39;m a test page</title>
+    <link href="http://thornvbear.tech/2016/07/28/Test-page/"/>
+    <id>http://thornvbear.tech/2016/07/28/Test-page/</id>
+    <published>2016-07-28T09:39:13.000Z</published>
+    <updated>2016-08-01T14:53:10.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>博客搬家了！</title>
     <link href="http://thornvbear.tech/2016/07/28/%E6%96%B0%E5%8D%9A%E5%AE%A2%EF%BC%8C%E6%96%B0%E6%B0%94%E8%B1%A1/"/>
     <id>http://thornvbear.tech/2016/07/28/新博客，新气象/</id>
     <published>2016-07-28T09:39:13.000Z</published>
-    <updated>2016-08-03T14:36:09.000Z</updated>
+    <updated>2018-11-21T09:50:27.490Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="我的博客之路"><a href="#我的博客之路" class="headerlink" title="我的博客之路"></a>我的博客之路</h2><p><img align="center" src="https://dn-thornstep.qbox.me/2016-07-30_blog_image.png"></p>
+    <content type="html"><![CDATA[<h2 id="我的博客之路"><a href="#我的博客之路" class="headerlink" title="我的博客之路"></a>我的博客之路</h2><p><img align="center" src="http://test.ineutech.com/2016-07-30_blog_image.png"></p>
 <h3 id="CSDN"><a href="#CSDN" class="headerlink" title="CSDN"></a>CSDN</h3><p>如今进入互联网这一行，如果没有自己的博客你都不好意思跟人家聊技术，我在3、4年就开始在CSDN上记录自己的学习过程，那时候之所以在CSDN上建博客，一来是因为方便，再者是没有技术要求。然而久而久之你会发现，这东西已经无法满足我们的要求，丫每次打开博客的时候都下决心要自定义自己的博客，于是乎就有了基于Octopress的博客。<br><a href="http://blog.csdn.net/u014783027" target="_blank" rel="external">CSDN博客</a></p>
 <h3 id="Octopress"><a href="#Octopress" class="headerlink" title="Octopress"></a>Octopress</h3><p>那是去年的第一场雪，比前年来的稍晚一些；我在自己的mac上键入疾飞，在克服重重困难之后终于在<a href="https://github.com/" target="_blank" rel="external">github</a>上搭建了属于自己的博客。此博客用了一年之久，然而又久而久之，丫又满足不了我们的要求了。一是因为人懒了，好久没更新了，更重要是提交更新巨慢啊，<code>rake preview</code>之后，喝了一杯咖啡你会发现还有百分之十未完成。这是由于Octopress是基于Ruby的，生成博客文章的速度非常慢，于是我就查找到了代替它的东西<a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>。</p>
 <h3 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h3><p>使用Hexo的原因：</p>
@@ -1049,7 +1076,7 @@ $ npm install
     
     <summary type="html">
     
-      &lt;h2 id=&quot;我的博客之路&quot;&gt;&lt;a href=&quot;#我的博客之路&quot; class=&quot;headerlink&quot; title=&quot;我的博客之路&quot;&gt;&lt;/a&gt;我的博客之路&lt;/h2&gt;&lt;p&gt;&lt;img align=&quot;center&quot; src=&quot;https://dn-thornstep.qbox.me/
+      &lt;h2 id=&quot;我的博客之路&quot;&gt;&lt;a href=&quot;#我的博客之路&quot; class=&quot;headerlink&quot; title=&quot;我的博客之路&quot;&gt;&lt;/a&gt;我的博客之路&lt;/h2&gt;&lt;p&gt;&lt;img align=&quot;center&quot; src=&quot;http://test.ineutech.com/2016
     
     </summary>
     
@@ -1061,33 +1088,6 @@ $ npm install
       <category term="github" scheme="http://thornvbear.tech/tags/github/"/>
     
       <category term="coding" scheme="http://thornvbear.tech/tags/coding/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>I&#39;m a test page</title>
-    <link href="http://thornvbear.tech/2016/07/28/Test-page/"/>
-    <id>http://thornvbear.tech/2016/07/28/Test-page/</id>
-    <published>2016-07-28T09:39:13.000Z</published>
-    <updated>2016-08-01T14:53:10.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
-    
-    </summary>
-    
     
   </entry>
   
