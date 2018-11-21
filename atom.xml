@@ -4,9 +4,9 @@
   <subtitle>STAY HUNGRY ！ STAY FOOLISH ！</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://thornvbear.com/"/>
+  <link href="http://thornvbear.tech/"/>
   <updated>2017-03-21T08:15:34.000Z</updated>
-  <id>http://thornvbear.com/</id>
+  <id>http://thornvbear.tech/</id>
   
   <author>
     <name>Thorn Wang</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>iOS 源码分析系列---MBProgressHUD！</title>
-    <link href="http://thornvbear.com/2017/03/20/iOS%20%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E7%B3%BB%E5%88%97-MBProgressHUD/"/>
-    <id>http://thornvbear.com/2017/03/20/iOS 源码分析系列-MBProgressHUD/</id>
+    <link href="http://thornvbear.tech/2017/03/20/iOS%20%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E7%B3%BB%E5%88%97-MBProgressHUD/"/>
+    <id>http://thornvbear.tech/2017/03/20/iOS 源码分析系列-MBProgressHUD/</id>
     <published>2017-03-19T16:00:00.000Z</published>
     <updated>2017-03-21T08:15:34.000Z</updated>
     
@@ -49,16 +49,16 @@
     </summary>
     
     
-      <category term="iOS" scheme="http://thornvbear.com/tags/iOS/"/>
+      <category term="iOS" scheme="http://thornvbear.tech/tags/iOS/"/>
     
-      <category term="源码分析" scheme="http://thornvbear.com/tags/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"/>
+      <category term="源码分析" scheme="http://thornvbear.tech/tags/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"/>
     
   </entry>
   
   <entry>
     <title>服务器使用docker部署nginx和php</title>
-    <link href="http://thornvbear.com/2017/02/09/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8docker%E9%83%A8%E7%BD%B2nginx%E5%92%8Cphp/"/>
-    <id>http://thornvbear.com/2017/02/09/服务器使用docker部署nginx和php/</id>
+    <link href="http://thornvbear.tech/2017/02/09/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8docker%E9%83%A8%E7%BD%B2nginx%E5%92%8Cphp/"/>
+    <id>http://thornvbear.tech/2017/02/09/服务器使用docker部署nginx和php/</id>
     <published>2017-02-09T12:57:11.000Z</published>
     <updated>2017-03-21T06:32:16.000Z</updated>
     
@@ -80,14 +80,14 @@
     </summary>
     
     
-      <category term="php" scheme="http://thornvbear.com/tags/php/"/>
+      <category term="php" scheme="http://thornvbear.tech/tags/php/"/>
     
   </entry>
   
   <entry>
     <title>我的这一年！</title>
-    <link href="http://thornvbear.com/2016/12/31/%E6%88%91%E7%9A%84%E8%BF%99%E4%B8%80%E5%B9%B4/"/>
-    <id>http://thornvbear.com/2016/12/31/我的这一年/</id>
+    <link href="http://thornvbear.tech/2016/12/31/%E6%88%91%E7%9A%84%E8%BF%99%E4%B8%80%E5%B9%B4/"/>
+    <id>http://thornvbear.tech/2016/12/31/我的这一年/</id>
     <published>2016-12-31T13:44:03.000Z</published>
     <updated>2017-02-23T06:33:31.000Z</updated>
     
@@ -105,14 +105,14 @@
     </summary>
     
     
-      <category term="综合" scheme="http://thornvbear.com/tags/%E7%BB%BC%E5%90%88/"/>
+      <category term="综合" scheme="http://thornvbear.tech/tags/%E7%BB%BC%E5%90%88/"/>
     
   </entry>
   
   <entry>
     <title>Docker系列之什么是Docker镜像、容器和仓库</title>
-    <link href="http://thornvbear.com/2016/12/14/Docker%E7%B3%BB%E5%88%97%E4%B9%8B%E4%BB%80%E4%B9%88%E6%98%AFDocker%E9%95%9C%E5%83%8F%E3%80%81%E5%AE%B9%E5%99%A8%E5%92%8C%E4%BB%93%E5%BA%93/"/>
-    <id>http://thornvbear.com/2016/12/14/Docker系列之什么是Docker镜像、容器和仓库/</id>
+    <link href="http://thornvbear.tech/2016/12/14/Docker%E7%B3%BB%E5%88%97%E4%B9%8B%E4%BB%80%E4%B9%88%E6%98%AFDocker%E9%95%9C%E5%83%8F%E3%80%81%E5%AE%B9%E5%99%A8%E5%92%8C%E4%BB%93%E5%BA%93/"/>
+    <id>http://thornvbear.tech/2016/12/14/Docker系列之什么是Docker镜像、容器和仓库/</id>
     <published>2016-12-14T05:24:38.000Z</published>
     <updated>2016-12-14T14:53:52.000Z</updated>
     
@@ -146,14 +146,14 @@
     </summary>
     
     
-      <category term="Docker" scheme="http://thornvbear.com/tags/Docker/"/>
+      <category term="Docker" scheme="http://thornvbear.tech/tags/Docker/"/>
     
   </entry>
   
   <entry>
     <title>移动APP服务端API设计应该考虑到的问题</title>
-    <link href="http://thornvbear.com/2016/12/07/%E7%A7%BB%E5%8A%A8APP%E6%9C%8D%E5%8A%A1%E7%AB%AFAPI%E8%AE%BE%E8%AE%A1%E5%BA%94%E8%AF%A5%E8%80%83%E8%99%91%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/"/>
-    <id>http://thornvbear.com/2016/12/07/移动APP服务端API设计应该考虑到的问题/</id>
+    <link href="http://thornvbear.tech/2016/12/07/%E7%A7%BB%E5%8A%A8APP%E6%9C%8D%E5%8A%A1%E7%AB%AFAPI%E8%AE%BE%E8%AE%A1%E5%BA%94%E8%AF%A5%E8%80%83%E8%99%91%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    <id>http://thornvbear.tech/2016/12/07/移动APP服务端API设计应该考虑到的问题/</id>
     <published>2016-12-07T05:16:45.000Z</published>
     <updated>2016-12-07T15:08:17.000Z</updated>
     
@@ -207,14 +207,14 @@
     </summary>
     
     
-      <category term="杂谈" scheme="http://thornvbear.com/tags/%E6%9D%82%E8%B0%88/"/>
+      <category term="杂谈" scheme="http://thornvbear.tech/tags/%E6%9D%82%E8%B0%88/"/>
     
   </entry>
   
   <entry>
     <title>移动端开发要懂点网络通信！</title>
-    <link href="http://thornvbear.com/2016/11/25/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%BC%80%E5%8F%91%E8%A6%81%E6%87%82%E7%82%B9%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/"/>
-    <id>http://thornvbear.com/2016/11/25/移动端开发要懂点网络通信/</id>
+    <link href="http://thornvbear.tech/2016/11/25/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%BC%80%E5%8F%91%E8%A6%81%E6%87%82%E7%82%B9%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/"/>
+    <id>http://thornvbear.tech/2016/11/25/移动端开发要懂点网络通信/</id>
     <published>2016-11-25T06:26:22.000Z</published>
     <updated>2016-12-02T06:38:29.000Z</updated>
     
@@ -298,14 +298,14 @@
     </summary>
     
     
-      <category term="网络通信" scheme="http://thornvbear.com/tags/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/"/>
+      <category term="网络通信" scheme="http://thornvbear.tech/tags/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/"/>
     
   </entry>
   
   <entry>
     <title>PHP 笔记整理（二）</title>
-    <link href="http://thornvbear.com/2016/10/22/PHP%20%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
-    <id>http://thornvbear.com/2016/10/22/PHP 笔记整理（二）/</id>
+    <link href="http://thornvbear.tech/2016/10/22/PHP%20%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
+    <id>http://thornvbear.tech/2016/10/22/PHP 笔记整理（二）/</id>
     <published>2016-10-22T05:42:13.000Z</published>
     <updated>2016-11-16T05:22:22.000Z</updated>
     
@@ -381,14 +381,14 @@
     </summary>
     
     
-      <category term="php" scheme="http://thornvbear.com/tags/php/"/>
+      <category term="php" scheme="http://thornvbear.tech/tags/php/"/>
     
   </entry>
   
   <entry>
     <title>Xcode 8.0姗姗来迟</title>
-    <link href="http://thornvbear.com/2016/09/14/xcode8%E5%A7%97%E5%A7%97%E6%9D%A5%E8%BF%9F/"/>
-    <id>http://thornvbear.com/2016/09/14/xcode8姗姗来迟/</id>
+    <link href="http://thornvbear.tech/2016/09/14/xcode8%E5%A7%97%E5%A7%97%E6%9D%A5%E8%BF%9F/"/>
+    <id>http://thornvbear.tech/2016/09/14/xcode8姗姗来迟/</id>
     <published>2016-09-14T09:46:36.000Z</published>
     <updated>2016-09-17T14:50:49.000Z</updated>
     
@@ -445,16 +445,16 @@
     </summary>
     
     
-      <category term="Xcode 8.0" scheme="http://thornvbear.com/tags/Xcode-8-0/"/>
+      <category term="Xcode 8.0" scheme="http://thornvbear.tech/tags/Xcode-8-0/"/>
     
-      <category term="新特性" scheme="http://thornvbear.com/tags/%E6%96%B0%E7%89%B9%E6%80%A7/"/>
+      <category term="新特性" scheme="http://thornvbear.tech/tags/%E6%96%B0%E7%89%B9%E6%80%A7/"/>
     
   </entry>
   
   <entry>
     <title>如何把View Controller瘦下来！</title>
-    <link href="http://thornvbear.com/2016/08/18/%E5%A6%82%E4%BD%95%E6%8A%8AViewController%E7%98%A6%E4%B8%8B%E6%9D%A5/"/>
-    <id>http://thornvbear.com/2016/08/18/如何把ViewController瘦下来/</id>
+    <link href="http://thornvbear.tech/2016/08/18/%E5%A6%82%E4%BD%95%E6%8A%8AViewController%E7%98%A6%E4%B8%8B%E6%9D%A5/"/>
+    <id>http://thornvbear.tech/2016/08/18/如何把ViewController瘦下来/</id>
     <published>2016-08-18T14:49:38.000Z</published>
     <updated>2016-08-25T15:58:48.000Z</updated>
     
@@ -622,16 +622,16 @@
     </summary>
     
     
-      <category term="UIView Controller" scheme="http://thornvbear.com/tags/UIView-Controller/"/>
+      <category term="UIView Controller" scheme="http://thornvbear.tech/tags/UIView-Controller/"/>
     
-      <category term="拆分" scheme="http://thornvbear.com/tags/%E6%8B%86%E5%88%86/"/>
+      <category term="拆分" scheme="http://thornvbear.tech/tags/%E6%8B%86%E5%88%86/"/>
     
   </entry>
   
   <entry>
     <title>PHP 笔记整理（一）</title>
-    <link href="http://thornvbear.com/2016/07/31/PHP%20%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86%EF%BC%88%E4%B8%80%EF%BC%89/"/>
-    <id>http://thornvbear.com/2016/07/31/PHP 笔记整理（一）/</id>
+    <link href="http://thornvbear.tech/2016/07/31/PHP%20%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>http://thornvbear.tech/2016/07/31/PHP 笔记整理（一）/</id>
     <published>2016-07-31T12:24:01.000Z</published>
     <updated>2016-11-16T05:22:37.000Z</updated>
     
@@ -980,14 +980,14 @@ mysql_close($con);
     </summary>
     
     
-      <category term="php" scheme="http://thornvbear.com/tags/php/"/>
+      <category term="php" scheme="http://thornvbear.tech/tags/php/"/>
     
   </entry>
   
   <entry>
     <title>博客搬家了！</title>
-    <link href="http://thornvbear.com/2016/07/28/%E6%96%B0%E5%8D%9A%E5%AE%A2%EF%BC%8C%E6%96%B0%E6%B0%94%E8%B1%A1/"/>
-    <id>http://thornvbear.com/2016/07/28/新博客，新气象/</id>
+    <link href="http://thornvbear.tech/2016/07/28/%E6%96%B0%E5%8D%9A%E5%AE%A2%EF%BC%8C%E6%96%B0%E6%B0%94%E8%B1%A1/"/>
+    <id>http://thornvbear.tech/2016/07/28/新博客，新气象/</id>
     <published>2016-07-28T09:39:13.000Z</published>
     <updated>2016-08-03T14:36:09.000Z</updated>
     
@@ -1054,20 +1054,20 @@ $ npm install
     </summary>
     
     
-      <category term="hexo" scheme="http://thornvbear.com/tags/hexo/"/>
+      <category term="hexo" scheme="http://thornvbear.tech/tags/hexo/"/>
     
-      <category term="博客" scheme="http://thornvbear.com/tags/%E5%8D%9A%E5%AE%A2/"/>
+      <category term="博客" scheme="http://thornvbear.tech/tags/%E5%8D%9A%E5%AE%A2/"/>
     
-      <category term="github" scheme="http://thornvbear.com/tags/github/"/>
+      <category term="github" scheme="http://thornvbear.tech/tags/github/"/>
     
-      <category term="coding" scheme="http://thornvbear.com/tags/coding/"/>
+      <category term="coding" scheme="http://thornvbear.tech/tags/coding/"/>
     
   </entry>
   
   <entry>
     <title>I&#39;m a test page</title>
-    <link href="http://thornvbear.com/2016/07/28/Test-page/"/>
-    <id>http://thornvbear.com/2016/07/28/Test-page/</id>
+    <link href="http://thornvbear.tech/2016/07/28/Test-page/"/>
+    <id>http://thornvbear.tech/2016/07/28/Test-page/</id>
     <published>2016-07-28T09:39:13.000Z</published>
     <updated>2016-08-01T14:53:10.000Z</updated>
     
@@ -1093,8 +1093,8 @@ $ npm install
   
   <entry>
     <title>写在三周年</title>
-    <link href="http://thornvbear.com/2016/05/05/2016%E5%86%99%E5%9C%A8%E4%B8%89%E5%91%A8%E5%B9%B4/"/>
-    <id>http://thornvbear.com/2016/05/05/2016写在三周年/</id>
+    <link href="http://thornvbear.tech/2016/05/05/2016%E5%86%99%E5%9C%A8%E4%B8%89%E5%91%A8%E5%B9%B4/"/>
+    <id>http://thornvbear.tech/2016/05/05/2016写在三周年/</id>
     <published>2016-05-05T02:10:10.000Z</published>
     <updated>2017-03-21T08:50:04.000Z</updated>
     
@@ -1103,7 +1103,7 @@ $ npm install
     </summary>
     
     
-      <category term="test" scheme="http://thornvbear.com/tags/test/"/>
+      <category term="test" scheme="http://thornvbear.tech/tags/test/"/>
     
   </entry>
   
